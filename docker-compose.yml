@@ -1,0 +1,28 @@
+services:
+# Web Server Service
+
+  cms-database:
+    container_name: cms-database
+    build: .
+    volumes:
+      - .:/var/www/html/
+    ports:
+      - 7001:80
+    command: ["/bin/bash", "/usr/local/bin/entrypoint.sh", "apache2-foreground"]
+
+
+  db:
+    image: postgres
+    container_name: postgres
+    volumes:
+      - laravel-cms_db_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    environment: 
+      POSTGRES_DB: cms-database
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: congkaka123
+
+volumes:
+  laravel-cms_db_data:
+    external: true
