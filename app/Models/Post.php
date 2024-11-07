@@ -26,4 +26,8 @@ class Post extends Model
         'featured',
         'status'
     ];
+
+    public function categories() {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
 }

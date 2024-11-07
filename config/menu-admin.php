@@ -22,6 +22,13 @@ return [
     ],
 
     [
+        'text' => 'Slides manager',
+        'icon' => 'bi bi-book',
+        'route' => 'admin.slides.index',
+        'activeIs' => 'admin.slides.*',
+    ],
+
+    [
         'text' => 'Category manager',
         'route' => 'admin.categories.index',
         'activeIs' => 'admin.categories.*',

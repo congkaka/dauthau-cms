@@ -79,14 +79,14 @@
                                         <textarea class="form-control" name="meta_keywords" aria-label="meta keywords"></textarea>
                                     </div>
 
-                                    <div class="mb-10 fv-row">
+                                    {{--  <div class="mb-10 fv-row">
                                         <label class="required form-label">Store</label>
                                         <select name="store_id" required class="form-select mb-2" data-placeholder="Select an option">
                                             @foreach($stores as $store)
                                             <option value="{{$store->id}}">{{$store->name}}</option>
                                             @endforeach
                                         </select>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="mb-10 fv-row">
                                         <label class="required form-label">Category</label>
@@ -109,12 +109,12 @@
                                             </div>
                                         </div>
                                         <div class="col-6">
-                                            <div class="mb-10 fv-row">
+                                            {{-- <div class="mb-10 fv-row">
                                                 <label class="col-lg-4 col-form-label fw-bold fs-6">Featured</label>
                                                 <div class="form-check form-switch">
                                                     <input class="form-check-input" name="featured" type="checkbox">
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>
 

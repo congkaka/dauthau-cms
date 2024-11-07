@@ -10,7 +10,7 @@
                      data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}"
                      class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
                      <ol class="breadcrumb text-muted fs-6 fw-semibold">
-                        <li class="breadcrumb-item"><a href="/cms" class="">Home</a></li>
+                        <li class="breadcrumb-item"><a href="" class="">Home</a></li>
                         <li class="breadcrumb-item text-muted">user</li>
                     </ol>
                 </div>

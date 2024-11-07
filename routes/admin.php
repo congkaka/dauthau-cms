@@ -44,6 +44,11 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
         Route::resource('blogs', \App\Http\Controllers\Admin\Blog\BlogController::class, array("as"=>"admin"));
     });
 
+    // Router slide
+    Route::group([], function () {
+        Route::resource('slides', \App\Http\Controllers\Admin\Slide\SlideController::class, array("as"=>"admin"));
+    });
+
     // Router Stores
     Route::group([], function () {
         Route::resource('stores', \App\Http\Controllers\Admin\Store\StoreController::class, array("as"=>"admin"));

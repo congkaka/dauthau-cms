@@ -1,30 +1,29 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Blog;
+namespace App\Http\Controllers\Admin\Slide;
 
 use App\Http\Controllers\Admin\CrudController;
-use App\Http\Controllers\Controller;
-use App\Repositories\BlogRepository;
 use App\Repositories\EloquentRepository;
+use App\Repositories\SlideRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class BlogController extends CrudController
+class SlideController extends CrudController
 {
-    private BlogRepository $blogRepo;
+    private SlideRepository $slideRepo;
     public function __construct()
     {
-        $this->blogRepo = new BlogRepository();
+        $this->slideRepo = new SlideRepository();
     }
 
     public function getRepository(): EloquentRepository
     {
-        return $this->blogRepo;
+        return $this->slideRepo;
     }
 
     public function getViewFolder(): string
     {
-        return 'admin.blogs';
+        return 'admin.slides';
     }
     /**
      * Display a listing of the resource.
@@ -40,7 +39,7 @@ class BlogController extends CrudController
     public function create($data = [])
     {
         $data['categories'] = (new \App\Repositories\CategoryRepository())->getAll();
-        // $data['stores'] = (new \App\Repositories\StoreRepository())->getAll();
+        $data['stores'] = (new \App\Repositories\StoreRepository())->getAll();
 
         return parent::create($data);
     }
@@ -67,7 +66,7 @@ class BlogController extends CrudController
     public function edit(int $id, $data = [])
     {
         $data['categories'] = (new \App\Repositories\CategoryRepository())->getAll();
-        // $data['stores'] = (new \App\Repositories\StoreRepository())->getAll();
+        $data['stores'] = (new \App\Repositories\StoreRepository())->getAll();
 
         return parent::edit($id, $data);
     }
