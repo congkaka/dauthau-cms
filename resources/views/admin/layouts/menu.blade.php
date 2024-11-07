@@ -13,7 +13,7 @@
     <!--begin::Brand-->
     <div class="aside-logo flex-column-auto" id="kt_aside_logo">
         <!--begin::Logo-->
-        <a href="/cms">
+        <a href="">
             <img alt="Logo" src="{{asset('admin/media/logo-tlv-ai.png')}}" class="h-85px logo" />
         </a>
         <!--end::Logo-->

@@ -9,10 +9,10 @@
             <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
                 <ol class="breadcrumb text-muted fs-6 fw-semibold">
                     <li class="breadcrumb-item"><a href="" class="">Home</a></li>
-                    <li class="breadcrumb-item text-muted">stores</li>
+                    <li class="breadcrumb-item text-muted">slides</li>
                 </ol>
             </div>
-            <a href="{{route('admin.stores.create')}}" class="btn btn-sm fw-bold btn-primary">Add</a>
+            <a href="{{route('admin.slides.create')}}" class="btn btn-sm fw-bold btn-primary">Add</a>
             <!--end::Page title-->
         </div>
         <!--end::Container-->
@@ -35,7 +35,7 @@
                                 <i class="bi bi-search"></i>
                             </span>
                             <!--end::Svg Icon-->
-                            <input type="text" name="name" data-kt-ecommerce-product-filter="search" class="form-control form-control-solid w-250px ps-14" value="{{Request::get('name')}}" placeholder="Search" />
+                            <input type="text" name="title" data-kt-ecommerce-product-filter="search" class="form-control form-control-solid w-250px ps-14" value="{{Request::get('title')}}" placeholder="Search" />
                         </div>
                         <button type="submit" class="btn btn-success">
                             <i class="bi bi-search"></i>
@@ -55,26 +55,24 @@
                         <thead>
                             <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                 <th>ID</th>
-                                <th>Name</th>
-                                <th>Alias</th>
-                                <th>Status</th>
-                                <th>Created At</th>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Image</th>
+                                <th>Position</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody class="fw-bold text-gray-600">
                             @foreach($items as $i)
                             <tr>
-                                <td>
-                                    {{$i->id}}
-                                </td>
-                                <td> {{ $i->name}} </td>
-                                <td> {{ $i->alias}} </td>
-                                <td> {{ $i->status}} </td>
-                                <td> {{ $i->created_at}} </td>
+                                <td> {{ $i->id }} </td>
+                                <td> {{ $i->title}} </td>
+                                <td> {{ $i->description}} </td>
+                                <td> {{ $i->image}} </td>
+                                <td> {{ $i->position}} </td>
                                 <td style="position: absolute">
-                                    <a href="{{route('admin.stores.edit', $i->id)}}" class="menu-link"><i class="bi bi-pencil-square text-warning pe-3"></i></a>
-                                    <a href="{{route('admin.stores.destroy', $i->id)}}" class="menu-link delete_btn"><i class="bi bi-trash text-danger pe-3"></i></a>
+                                    <a href="{{route('admin.slides.edit', $i->id)}}" class="menu-link"><i class="bi bi-pencil-square text-warning pe-3"></i></a>
+                                    <a href="{{route('admin.slides.destroy', $i->id)}}" class="menu-link delete_btn"><i class="bi bi-trash text-danger pe-3"></i></a>
                                 </td>
                             </tr>
                             @endforeach
