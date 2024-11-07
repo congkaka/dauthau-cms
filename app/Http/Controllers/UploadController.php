@@ -13,6 +13,7 @@ class UploadController extends Controller
         if ($request->hasFile('file')) {
             return $this->handleUpload($request->file('file'));
         }
+        
         return null;
     }
 
@@ -32,14 +33,18 @@ class UploadController extends Controller
     }
 
     public function handleUpload($image){
-        $fileExtension = $image->extension();
-        $imageName = Str::uuid()->toString().'.'.$fileExtension;
-        $image -> move(public_path('storage/'.date('d_m_y').'/image/'), $imageName);
-        $path = 'storage/'.date('d_m_y').'/image/'.$imageName;
+        try {
+            $fileExtension = $image->extension();
+            $imageName = Str::uuid()->toString().'.'.$fileExtension;
+            $image -> move(public_path('storage/'.date('d_m_y').'/image/'), $imageName);
+            $path = 'storage/'.date('d_m_y').'/image/'.$imageName;
 
-        return $path;
+            return $path;
 
-        return $this->toWebp($path, $fileExtension, true);
+            return $this->toWebp($path, $fileExtension, true);
+        } catch (\Throwable $th) {
+            dd($th);
+        }
     }
 
     function toWebp($path, $fileExtension, $isResize) {
