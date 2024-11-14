@@ -1,0 +1,24 @@
+name: Laravel deploy production
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Run remote
+      uses: appleboy/ssh-action@v0.1.6
+      with:
+        host: ${{ secrets.VPS_HOST }}
+        username: ${{ secrets.VPS_USERNAME }}
+        key: ${{ secrets.VPS_PASSWORD }}
+        script: |
+          cd admin.dauthau.online/
+          git fetch origin
+          git pull
+          composer install
+          php artisan migrate --force
