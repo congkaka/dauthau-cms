@@ -9,16 +9,24 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-    - name: Run remote
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Run remote commands via SSH with password
       uses: appleboy/ssh-action@v0.1.6
       with:
         host: ${{ secrets.VPS_HOST }}
         username: ${{ secrets.VPS_USERNAME }}
-        key: ${{ secrets.VPS_PASSWORD }}
+        password: ${{ secrets.VPS_PASSWORD }}
+        port: ${{ secrets.VPS_PORT }}
         script: |
           cd admin.dauthau.online/
-          git fetch origin
-          git pull
-          composer install
+          git fetch origin main
+          git reset --hard origin/main
+          composer install --no-interaction --prefer-dist --optimize-autoloader
           php artisan migrate --force
+          php artisan config:cache
+          php artisan route:cache
+          php artisan view:cache
