@@ -58,4 +58,15 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
     Route::group([], function () {
         Route::resource('permissions', \App\Http\Controllers\Admin\Permission\PermissionController::class, array("as"=>"admin"));
     });
+
+    // Router Setting
+    Route::group(['prefix' => 'setting'], function () {
+        Route::match('get', 'contact', [\App\Http\Controllers\Admin\Setting\SettingController::class, 'contact'])->name('admin.setting.contact');
+        Route::match('get', 'telegram', [\App\Http\Controllers\Admin\Setting\SettingController::class, 'telegram'])->name('admin.setting.telegram');
+        Route::match('get', 'image', [\App\Http\Controllers\Admin\Setting\SettingController::class, 'image'])->name('admin.setting.image');
+        Route::match('get', 'footer', [\App\Http\Controllers\Admin\Setting\SettingController::class, 'footer'])->name('admin.setting.footer');
+        Route::match('get', 'menu', [\App\Http\Controllers\Admin\Setting\SettingController::class, 'menu'])->name('admin.setting.menu');
+        Route::match('post', 'update', [\App\Http\Controllers\Admin\Setting\SettingController::class, 'updateSiteSetting'])->name('admin.setting.update');
+        Route::match(['get'], 'bank', [\App\Http\Controllers\Admin\Setting\SettingController::class, 'bank'])->name('admin.setting.pay');
+    });
 });

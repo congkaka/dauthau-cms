@@ -48,4 +48,30 @@ return [
         'activeIs' => 'admin.permissions.*',
         'icon' => 'bi bi-file-earmark-lock'
     ],
+
+    [
+        'text' => 'Cài đặt trang',
+        'icon' => 'bi bi-gear',
+        'activeIs' => 'admin.setting.*',
+        'children' => [
+            [
+                'text' => 'Cài đặt liên hệ',
+                'route' => 'admin.setting.contact',
+                'activeIs' => 'admin.setting.contact',
+                'icon' => 'bi bi-circle'
+            ],
+            // [
+            //     'text' => 'Thông báo telegram',
+            //     'route' => 'admin.setting.telegram',
+            //     'activeIs' => 'admin.setting.telegram',
+            //     'icon' => 'bi bi-circle'
+            // ],
+            // [
+            //     'text' => 'Cài đặt ngân hàng',
+            //     'route' => 'admin.setting.pay',
+            //     'activeIs' => 'admin.setting.pay',
+            //     'icon' => 'bi bi-circle'
+            // ]
+        ],
+    ]
 ];
