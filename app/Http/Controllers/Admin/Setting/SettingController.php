@@ -49,7 +49,8 @@ class SettingController extends Controller
     public function image()
     {
         $setting = $this->settingRepository->getFirst();
-        
+
+        // dd($setting);
         return view('admin.setting.image', compact('setting'));
     }
 

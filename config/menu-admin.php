@@ -74,6 +74,24 @@ return [
                 'activeIs' => 'admin.setting.contact',
                 'icon' => 'bi bi-circle'
             ],
+            [
+                'text' => 'Cài đặt footer',
+                'route' => 'admin.setting.footer',
+                'activeIs' => 'admin.setting.footer',
+                'icon' => 'bi bi-circle'
+            ],
+            [
+                'text' => 'Cài đặt menu',
+                'route' => 'admin.setting.menu',
+                'activeIs' => 'admin.setting.menu',
+                'icon' => 'bi bi-circle'
+            ],
+            [
+                'text' => 'Cài đặt image',
+                'route' => 'admin.setting.image',
+                'activeIs' => 'admin.setting.image',
+                'icon' => 'bi bi-circle'
+            ],
             // [
             //     'text' => 'Thông báo telegram',
             //     'route' => 'admin.setting.telegram',

@@ -48,12 +48,12 @@
                                 <label class="col-lg-4 col-form-label fw-bold fs-6">Logo</label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
-                                <x-single-img-upload inputName="logo" fillValue="{{isset($setting['logo']) ? $setting['logo'] : ''}}"/>
+                                <x-admin.single-img-upload inputName="logo" fillValue="{{isset($setting['logo']) ? $setting['logo'] : ''}}"/>
                                 <!--end::Col-->
                             </div>
                             <!--end::Input group-->
                             <!--begin::test-->
-                            <div class="row mb-6 card-body border-top p-9 footer_column">
+                            {{--<div class="row mb-6 card-body border-top p-9 footer_column">
                                 <!--begin::Label-->
                                 <label class="col-lg-4 col-form-label fw-bold fs-6">Slide</label>
                                 <!--end::Label-->
@@ -62,7 +62,7 @@
                                     @include('admin.setting.setting_multi_image_item', ['block' => 'slide'])
                                 </div>
                                 <!--end::Col-->
-                            </div>
+                            </div>--}}
                             <!--end::test-->
                             <!--begin::Input group-->
                             <div class="row mb-6 card-body border-top p-9 footer_column">
@@ -72,7 +72,7 @@
                                 <!--begin::Col-->
                                 <div class="col-lg-8">
                                     <!--begin::Row-->
-                                    <x-mutiple-img-upload inputName="slide" fillValues="{{isset($setting['slide']) ? implode(',', $setting['slide']) : '' }}"/>
+                                    <x-admin.multiple-img-upload inputName="slide" fillValues="{{isset($setting['slide']) ? implode(',', $setting['slide']) : '' }}"/>
                                     <!--end::Row-->
                                 </div>
                                 <!--end::Col-->
@@ -86,7 +86,7 @@
                                 <!--begin::Col-->
                                 <div class="col-lg-8">
                                     <!--begin::Row-->
-                                    <x-mutiple-img-upload inputName="main_banner" fillValues="{{isset($setting['main_banner']) ? implode(',', $setting['main_banner']) : '' }}"/>
+                                    <x-admin.multiple-img-upload inputName="main_banner" fillValues="{{isset($setting['main_banner']) ? implode(',', $setting['main_banner']) : '' }}"/>
                                     <!--end::Row-->
                                 </div>
                                 <!--end::Col-->
@@ -100,7 +100,7 @@
                                 <!--begin::Col-->
                                 <div class="col-lg-8">
                                     <!--begin::Row-->
-                                    <x-mutiple-img-upload inputName="sub_banner" fillValues="{{isset($setting['sub_banner']) ? implode(',', $setting['sub_banner']) : '' }}"/>
+                                    <x-admin.multiple-img-upload inputName="sub_banner" fillValues="{{isset($setting['sub_banner']) ? implode(',', $setting['sub_banner']) : '' }}"/>
                                     <!--end::Row-->
                                 </div>
                                 <!--end::Col-->
