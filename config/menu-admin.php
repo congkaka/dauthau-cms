@@ -29,6 +29,20 @@ return [
     ],
 
     [
+        'text' => 'Expert manager',
+        'icon' => 'bi bi-book',
+        'route' => 'admin.expert.index',
+        'activeIs' => 'admin.expert.*',
+    ],
+
+    [
+        'text' => 'Partner manager',
+        'icon' => 'bi bi-book',
+        'route' => 'admin.partner.index',
+        'activeIs' => 'admin.partner.*',
+    ],
+
+    [
         'text' => 'Category manager',
         'route' => 'admin.categories.index',
         'activeIs' => 'admin.categories.*',
