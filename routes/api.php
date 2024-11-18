@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\Api\BlogController;
+use App\Http\Controllers\Api\ContactInformationController;
+use App\Http\Controllers\Api\ExpertController;
+use App\Http\Controllers\Api\PartnerController;
 use App\Http\Controllers\Api\SlideController;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -38,5 +41,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::get('/slides', [SlideController::class, 'getSlides']);
     Route::get('/blogs', [BlogController::class, 'getBlogs']);
+    Route::get('/contact-info', [ContactInformationController::class, 'getContactInformation']);
+    Route::get('/experts', [ExpertController::class, 'getExpert']);
+    Route::get('/partners', [PartnerController::class, 'getPartner']);
 
 });
