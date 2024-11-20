@@ -79,4 +79,9 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
         Route::match('post', 'update', [\App\Http\Controllers\Admin\Setting\SettingController::class, 'updateSiteSetting'])->name('admin.setting.update');
         Route::match(['get'], 'bank', [\App\Http\Controllers\Admin\Setting\SettingController::class, 'bank'])->name('admin.setting.pay');
     });
+
+    // Router training
+    Route::group([], function () {
+        Route::resource('training', \App\Http\Controllers\Admin\Training\TrainingController::class, array("as"=>"admin"));
+    });
 });

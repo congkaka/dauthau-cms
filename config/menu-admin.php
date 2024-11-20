@@ -45,8 +45,8 @@ return [
     [
         'text' => 'Dịch vụ đào tạo',
         'icon' => 'bi bi-book',
-        'route' => 'admin.partner.index',
-        'activeIs' => 'admin.partner.*',
+        'route' => 'admin.training.index',
+        'activeIs' => 'admin.training.*',
     ],
 
     [
