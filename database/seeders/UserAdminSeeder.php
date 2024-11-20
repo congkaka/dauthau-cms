@@ -33,11 +33,13 @@ class UserAdminSeeder extends Seeder
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
+        // $user = User::where('name', 'congkaka')->first();
         $menuAdmin = config('menu-admin');
         $permissionList = Arr::pluck($menuAdmin, 'text');
         $permissionOther = [
             'decentralization'
         ];
+        // $permissionOther = [];
         //Create Permissions List
         $permissionList = array_merge($permissionList, $permissionOther);
         foreach ($permissionList as $permission) {
