@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\ContactInformationController;
 use App\Http\Controllers\Api\ExpertController;
 use App\Http\Controllers\Api\PartnerController;
 use App\Http\Controllers\Api\SlideController;
+use App\Http\Controllers\Api\TrainingController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -44,5 +45,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/contact-info', [ContactInformationController::class, 'getContactInformation']);
     Route::get('/experts', [ExpertController::class, 'getExpert']);
     Route::get('/partners', [PartnerController::class, 'getPartner']);
+    Route::get('/training', [TrainingController::class, 'getTraining']);
+    Route::get('/training-with-cate', [TrainingController::class, 'getTrainingWithCate']);
 
 });
