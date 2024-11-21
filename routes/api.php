@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\BlogController;
+use App\Http\Controllers\Api\BookingController;
 use App\Http\Controllers\Api\ContactInformationController;
 use App\Http\Controllers\Api\ExpertController;
 use App\Http\Controllers\Api\PartnerController;
@@ -45,7 +46,10 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/contact-info', [ContactInformationController::class, 'getContactInformation']);
     Route::get('/experts', [ExpertController::class, 'getExpert']);
     Route::get('/partners', [PartnerController::class, 'getPartner']);
-    Route::get('/training', [TrainingController::class, 'getTraining']);
+    Route::get('/training/{alias}', [TrainingController::class, 'getTraining']);
+    Route::get('/training', [TrainingController::class, 'getAllTraining']);
     Route::get('/training-with-cate', [TrainingController::class, 'getTrainingWithCate']);
+
+    Route::post('/update-booking', [BookingController::class, 'UpdateBooking']);
 
 });
