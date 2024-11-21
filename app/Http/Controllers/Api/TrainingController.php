@@ -10,7 +10,13 @@ use Illuminate\Http\Request;
 
 class TrainingController extends Controller
 {
-    public function getTraining(){
+    public function getTraining($alias){
+        $data = Training::where('alias', $alias)->first();
+
+        return Helper::response($data, 200);
+    }
+
+    public function getAllTraining(){
         $data = Training::get();
 
         return Helper::response($data, 200);
