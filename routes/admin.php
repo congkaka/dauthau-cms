@@ -84,4 +84,9 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
     Route::group([], function () {
         Route::resource('training', \App\Http\Controllers\Admin\Training\TrainingController::class, array("as"=>"admin"));
     });
+
+    // Router booking
+    Route::group([], function () {
+        Route::resource('booking', \App\Http\Controllers\Admin\Booking\BookingController::class, array("as"=>"admin"));
+    });
 });

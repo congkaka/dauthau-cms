@@ -41,7 +41,7 @@ return [
         'route' => 'admin.partner.index',
         'activeIs' => 'admin.partner.*',
     ],
-    
+
     [
         'text' => 'Dịch vụ đào tạo',
         'icon' => 'bi bi-book',
@@ -49,18 +49,18 @@ return [
         'activeIs' => 'admin.training.*',
     ],
 
-    [
-        'text' => 'Dịch vụ Tư vấn',
-        'icon' => 'bi bi-book',
-        'route' => 'admin.partner.index',
-        'activeIs' => 'admin.partner.*',
-    ],
+    // [
+    //     'text' => 'Dịch vụ Tư vấn',
+    //     'icon' => 'bi bi-book',
+    //     'route' => 'admin.partner.index',
+    //     'activeIs' => 'admin.partner.*',
+    // ],
 
     [
         'text' => 'Quản lý đăng ký',
         'icon' => 'bi bi-book',
-        'route' => 'admin.partner.index',
-        'activeIs' => 'admin.partner.*',
+        'route' => 'admin.booking.index',
+        'activeIs' => 'admin.booking.*',
     ],
 
     [
