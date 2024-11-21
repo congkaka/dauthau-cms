@@ -20,4 +20,9 @@ class Category extends Model
     ];
 
     protected $casts = [];
+
+    public function training(): HasMany
+    {
+        return $this->hasMany(Training::class);
+    }
 }
