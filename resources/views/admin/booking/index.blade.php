@@ -1,5 +1,8 @@
 @extends('admin.layouts.app')
 @section('content')
+@php
+$courses = \App\Models\Training::get();
+@endphp
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <!--begin::Toolbar-->
     <div class="toolbar" id="kt_toolbar">
@@ -74,7 +77,13 @@
                                 <td> {{ ($i->gender == 1) ? 'Nam' : 'Nữ'}} </td>
                                 <td> {{ $i->phone}} </td>
                                 <td> {{ $i->email}} </td>
-                                <td> {{ $i->training_id}} </td>
+                                <td>
+                                    @php
+                                    foreach($courses as $course) {
+                                    if($course->id == $i->training_id) echo $course->name;
+                                    }
+                                    @endphp
+                                </td>
                                 <td> {{ $i->traffic}} </td>
                                 <td> {{ $i->position}} </td>
                                 <td> {{ $i->company}} </td>
