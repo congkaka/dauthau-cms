@@ -68,6 +68,7 @@ $courses = \App\Models\Training::get();
                                 <th>Kinh nghiệm</th>
                                 <th>ghi chú</th>
                                 <th>ngày tạo</th>
+                                <th>#</th>
                             </tr>
                         </thead>
                         <tbody class="fw-bold text-gray-600">
@@ -90,10 +91,10 @@ $courses = \App\Models\Training::get();
                                 <td> {{ $i->experience}} </td>
                                 <td> {{ $i->note}} </td>
                                 <td> {{ $i->created_at}} </td>
-                                <!-- <td style="position: absolute">
-                                    <a href="{{route('admin.booking.edit', $i->id)}}" class="menu-link"><i class="bi bi-pencil-square text-warning pe-3"></i></a>
+                                <td style="position: absolute">
+                                    <!-- <a href="{{route('admin.booking.edit', $i->id)}}" class="menu-link"><i class="bi bi-pencil-square text-warning pe-3"></i></a> -->
                                     <a href="{{route('admin.booking.destroy', $i->id)}}" class="menu-link delete_btn"><i class="bi bi-trash text-danger pe-3"></i></a>
-                                </td> -->
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

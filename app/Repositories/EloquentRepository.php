@@ -81,7 +81,7 @@ abstract class EloquentRepository
         $items = $this->_model::query();
         foreach ($query as $q => $v) {
             if (in_array($q, $this->_model->getFillable()) && $v) {
-                $items->where($q, 'ilike', '%'.$v.'%');
+                $items->where($q, 'like', '%'.$v.'%');
             }
         }
         if ($select) {
