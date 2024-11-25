@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\View\Components\Admin\SingleImgUpload;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\URL;
 
@@ -23,5 +25,8 @@ class AppServiceProvider extends ServiceProvider
         if(getenv('APP_ENV') && getenv('APP_ENV') == 'prod'){
             URL::forceScheme('https');
         }
+
+        Blade::component('single-img-upload', SingleImgUpload::class);
+
     }
 }
