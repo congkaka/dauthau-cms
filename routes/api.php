@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\BookingController;
 use App\Http\Controllers\Api\ContactInformationController;
 use App\Http\Controllers\Api\ExpertController;
 use App\Http\Controllers\Api\PartnerController;
+use App\Http\Controllers\Api\RegulationController;
 use App\Http\Controllers\Api\SlideController;
 use App\Http\Controllers\Api\TrainingController;
 use App\Models\User;
@@ -51,5 +52,9 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/training-with-cate', [TrainingController::class, 'getTrainingWithCate']);
 
     Route::post('/update-booking', [BookingController::class, 'UpdateBooking']);
+
+    Route::get('/regulation', [RegulationController::class, 'getRegulation']);
+
+
 
 });
