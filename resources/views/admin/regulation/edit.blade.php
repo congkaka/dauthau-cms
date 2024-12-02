@@ -119,5 +119,13 @@
 @endsection
 @push('custom-scripts')
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Khởi tạo Flatpickr
+        flatpickr('.datetimepicker', {
+            enableTime: true, // Bật tùy chọn thời gian (nếu cần)
+            dateFormat: 'Y-m-d H:i', // Định dạng ngày giờ (YYYY-MM-DD HH:mm)
+            time_24hr: true // Hiển thị giờ theo định dạng 24 giờ
+        });
+    });
 </script>
 @endpush
