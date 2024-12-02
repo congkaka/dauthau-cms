@@ -95,5 +95,30 @@
 @endsection
 @push('custom-scripts')
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const nameField = document.querySelector('input[name="name"]');
+        const aliasField = document.querySelector('input[name="alias"]');
+
+        if (nameField && aliasField) {
+            nameField.addEventListener('input', function() {
+                const aliasValue = removeVietnameseTones(nameField.value)
+                    .toLowerCase() // Chuyển thành chữ thường
+                    .trim() // Loại bỏ khoảng trắng ở đầu và cuối
+                    .replace(/[^a-z0-9\s]/g, '') // Loại bỏ ký tự đặc biệt
+                    .replace(/\s+/g, '-'); // Thay thế khoảng trắng bằng dấu '-'
+
+                aliasField.value = aliasValue;
+            });
+        }
+    });
+
+    function removeVietnameseTones(str) {
+        return str
+            .normalize('NFD') // Chuẩn hóa Unicode tổ hợp
+            .replace(/[\u0300-\u036f]/g, '') // Loại bỏ dấu tổ hợp
+            .replace(/đ/g, 'd') // Thay thế 'đ' thành 'd'
+            .replace(/Đ/g, 'D') // Thay thế 'Đ' thành 'D'
+            .replace(/[^\w\s]/gi, ''); // Loại bỏ ký tự đặc biệt (giữ lại chữ cái, số và khoảng trắng)
+    }
 </script>
 @endpush
