@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('regulations', function (Blueprint $table) {
             $table->id();
             $table->string('number');
-            $table->integer('status')->nullable();
+            $table->string('status')->nullable();
             $table->text('title')->nullable();
             $table->string('issuingAgency')->nullable();
             $table->string('signer')->nullable();

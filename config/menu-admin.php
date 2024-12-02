@@ -57,6 +57,13 @@ return [
     // ],
 
     [
+        'text' => 'Văn bản pháp quy',
+        'icon' => 'bi bi-book',
+        'route' => 'admin.regulation.index',
+        'activeIs' => 'admin.regulation.*',
+    ],
+
+    [
         'text' => 'Quản lý đăng ký',
         'icon' => 'bi bi-book',
         'route' => 'admin.booking.index',

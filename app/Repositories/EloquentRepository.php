@@ -78,6 +78,7 @@ abstract class EloquentRepository
     public function getPaginate(Request $request, $select = [])
     {
         $query = $request->all();
+        
         $items = $this->_model::query();
         foreach ($query as $q => $v) {
             if (in_array($q, $this->_model->getFillable()) && $v) {
