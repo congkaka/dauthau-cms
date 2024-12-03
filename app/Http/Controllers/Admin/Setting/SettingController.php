@@ -61,6 +61,13 @@ class SettingController extends Controller
         return view('admin.setting.footer', compact('setting'));
     }
 
+    public function info()
+    {
+        $setting = $this->settingRepository->getFirst();
+
+        return view('admin.setting.info', compact('setting'));
+    }
+
     public function menu()
     {
         $setting = $this->settingRepository->getFirst();
@@ -90,6 +97,21 @@ class SettingController extends Controller
             }
             $request['footer'] = $footer;
         }
+
+        if($request->highlight){
+            $highlight = array_values($request->highlight);
+            foreach ($highlight as $k => $v){
+                $item = [];
+                for ($i = 0; $i < sizeof($v['name']); $i++){
+                    $item[$i]['name'] = $v['name'][$i];
+                    $item[$i]['target'] = $v['target'][$i];
+                }
+                $highlight[$k]['item'] = $item;
+                unset($highlight[$k]['name'], $highlight[$k]['target']);
+            }
+            $request['highlight'] = $highlight;
+        }
+
         if($request->main_menu){
             $main_menu = $request->main_menu;
             $item = [];
