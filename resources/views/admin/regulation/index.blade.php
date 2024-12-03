@@ -75,7 +75,7 @@
                                 <td> {{ $i->signer}} </td>
                                 <td> {{ $i->issuedDate}} </td>
                                 <td> {{ $i->effectiveDate}} </td>
-                                <td> {{ $i->download_path}} </td>
+                                <td> @if($i->download_path != 'not_found')<a href="{{ $i->download_path}}" download>{{ $i->download_path}}</a> @endif</td>
                                 <td style="position: absolute">
                                     <a href="{{route('admin.regulation.edit', $i->id)}}" class="menu-link"><i class="bi bi-pencil-square text-warning pe-3"></i></a>
                                     <a href="{{route('admin.regulation.destroy', $i->id)}}" class="menu-link delete_btn"><i class="bi bi-trash text-danger pe-3"></i></a>

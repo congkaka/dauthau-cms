@@ -30,4 +30,12 @@ class TrainingController extends Controller
 
         return Helper::response($data, 200);
     }
+
+    public function getAllTrainingUpComing() {
+        $cate = Category::where('slug', 'sap-khai-giang')->first();
+        if(empty($cate)) return Helper::response([], 200);
+        $data = Training::where('category_id', $cate->id)->get();
+
+        return Helper::response($data, 200);
+    }
 }
