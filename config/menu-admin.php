@@ -109,6 +109,12 @@ return [
                 'icon' => 'bi bi-circle'
             ],
             [
+                'text' => 'Giới thiệu',
+                'route' => 'admin.setting.info',
+                'activeIs' => 'admin.setting.info',
+                'icon' => 'bi bi-circle'
+            ],
+            [
                 'text' => 'Cài đặt menu',
                 'route' => 'admin.setting.menu',
                 'activeIs' => 'admin.setting.menu',

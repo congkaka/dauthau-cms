@@ -37,7 +37,11 @@ class SiteSetting extends Model
 
         'bank',
 
-        'telegram'
+        'telegram',
+
+        'info',
+
+        'highlight'
     ];
 
     protected $casts = [
@@ -49,5 +53,6 @@ class SiteSetting extends Model
         'footer' => 'array',
         'bank' => 'array',
         'telegram' => 'array',
+        'highlight' => 'array'
     ];
 }

@@ -75,6 +75,7 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
         Route::match('get', 'telegram', [\App\Http\Controllers\Admin\Setting\SettingController::class, 'telegram'])->name('admin.setting.telegram');
         Route::match('get', 'image', [\App\Http\Controllers\Admin\Setting\SettingController::class, 'image'])->name('admin.setting.image');
         Route::match('get', 'footer', [\App\Http\Controllers\Admin\Setting\SettingController::class, 'footer'])->name('admin.setting.footer');
+        Route::match('get', 'info', [\App\Http\Controllers\Admin\Setting\SettingController::class, 'info'])->name('admin.setting.info');
         Route::match('get', 'menu', [\App\Http\Controllers\Admin\Setting\SettingController::class, 'menu'])->name('admin.setting.menu');
         Route::match('post', 'update', [\App\Http\Controllers\Admin\Setting\SettingController::class, 'updateSiteSetting'])->name('admin.setting.update');
         Route::match(['get'], 'bank', [\App\Http\Controllers\Admin\Setting\SettingController::class, 'bank'])->name('admin.setting.pay');
