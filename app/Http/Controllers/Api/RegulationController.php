@@ -12,9 +12,9 @@ class RegulationController extends Controller
     public function getRegulation()
     {
         $regulations = Regulation::paginate(10);
-        foreach($regulations as $regulation) {
-            $regulation->download_path = $regulation->download_path;
-        }
+        // foreach($regulations as $regulation) {
+        //     $regulation->download_path = $regulation->download_path;
+        // }
 
         return Helper::response($regulations, 200);
     }

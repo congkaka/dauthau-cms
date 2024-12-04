@@ -16,7 +16,7 @@ return [
 
     [
         'text' => 'Tin tức & sự kiện',
-        'icon' => 'bi bi-book',
+        'icon' => 'bi bi-megaphone',
         'route' => 'admin.blogs.index',
         'activeIs' => 'admin.blogs.*',
     ],
@@ -30,21 +30,21 @@ return [
 
     [
         'text' => 'Chuyên gia',
-        'icon' => 'bi bi-book',
+        'icon' => 'bi bi-person-badge-fill',
         'route' => 'admin.expert.index',
         'activeIs' => 'admin.expert.*',
     ],
 
     [
         'text' => 'Đối tác',
-        'icon' => 'bi bi-book',
+        'icon' => 'bi bi-link',
         'route' => 'admin.partner.index',
         'activeIs' => 'admin.partner.*',
     ],
 
     [
         'text' => 'Dịch vụ đào tạo',
-        'icon' => 'bi bi-book',
+        'icon' => 'bi bi-person-video3',
         'route' => 'admin.training.index',
         'activeIs' => 'admin.training.*',
     ],
@@ -65,7 +65,7 @@ return [
 
     [
         'text' => 'Quản lý đăng ký',
-        'icon' => 'bi bi-book',
+        'icon' => 'bi bi-pencil-fill',
         'route' => 'admin.booking.index',
         'activeIs' => 'admin.booking.*',
     ],
