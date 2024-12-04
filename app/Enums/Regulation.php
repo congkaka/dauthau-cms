@@ -11,9 +11,9 @@ enum Regulation: string
     public static function getMap(): array
     {
         return [
-            self::PUBLISHED->value => 'Published',
-            self::DRAFT->value => 'Draft',
-            self::PENDING->value => 'Pending'
+            1 => 'Published',
+            0 => 'Draft',
+            2 => 'Pending'
         ];
     }
 
