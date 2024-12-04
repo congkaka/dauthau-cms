@@ -11,4 +11,8 @@ class CategoryRepository extends EloquentRepository
     {
         return new Category();
     }
+
+    public function getCateIgnorePost() {
+        return Category::whereNotIn('slug', ['tin-tuc'])->get();
+    }
 }

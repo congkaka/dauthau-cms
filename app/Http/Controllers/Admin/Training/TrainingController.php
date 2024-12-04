@@ -35,8 +35,7 @@ class TrainingController extends CrudController
      */
     public function create($data = [])
     {
-        $data['categories'] = (new \App\Repositories\CategoryRepository())->getAll();
-        $data['stores'] = (new \App\Repositories\StoreRepository())->getAll();
+        $data['categories'] = (new \App\Repositories\CategoryRepository())->getCateIgnorePost();
 
         return parent::create($data);
     }
@@ -62,8 +61,7 @@ class TrainingController extends CrudController
      */
     public function edit(int $id, $data = [])
     {
-        $data['categories'] = (new \App\Repositories\CategoryRepository())->getAll();
-        $data['stores'] = (new \App\Repositories\StoreRepository())->getAll();
+        $data['categories'] = (new \App\Repositories\CategoryRepository())->getCateIgnorePost();
 
         return parent::edit($id, $data);
     }
