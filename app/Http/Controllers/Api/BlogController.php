@@ -19,4 +19,13 @@ class BlogController extends Controller
             return Helper::response($e->getMessage(), 500);
         }
     }
+
+    public function getBlogAlias(Request $request, $alias)
+    {
+        $data = Post::with(['related' => function ($query) use ($alias) {
+            $query->where('slug', '<>', $alias);
+        }])->where(['slug' => $alias])->first();
+
+        return Helper::response($data, 200);
+    }
 }
