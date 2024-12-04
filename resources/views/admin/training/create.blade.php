@@ -52,6 +52,16 @@
                                     </div>
 
                                     <div class="mb-10 fv-row">
+                                        <label class="form-label">Title</label>
+                                        <input type="text" name="title" value="" class="form-control" />
+                                    </div>
+
+                                    <div class="mb-10 fv-row">
+                                        <label class="form-label">Intro</label>
+                                        <textarea type="text" name="intro" class="form-control" id="kt_docs_ckeditor_classic"> </textarea>
+                                    </div>
+
+                                    <div class="mb-10 fv-row">
                                         <label class="required form-label">Category</label>
                                         <select name="category_id" required class="form-select mb-2" data-placeholder="Select an option">
                                             @foreach($categories as $category)
@@ -63,6 +73,16 @@
                                     <div class="mb-10 fv-row">
                                         <label class="form-label">Time</label>
                                         <input type="text" name="time" value="" class="form-control" />
+                                    </div>
+
+                                    <div class="mb-10 fv-row">
+                                        <label class="form-label">Price</label>
+                                        <input type="text" name="price" value="" class="form-control" />
+                                    </div>
+
+                                    <div class="mb-10 fv-row">
+                                        <label class="form-label">Lesson</label>
+                                        <input type="text" name="lesson" value="" class="form-control" />
                                     </div>
 
                                     <div class="mb-10 fv-row">
@@ -125,5 +145,14 @@
             .replace(/Đ/g, 'D') // Thay thế 'Đ' thành 'D'
             .replace(/[^\w\s]/gi, ''); // Loại bỏ ký tự đặc biệt (giữ lại chữ cái, số và khoảng trắng)
     }
+
+    ClassicEditor
+    .create(document.querySelector('#kt_docs_ckeditor_classic'))
+    .then(editor => {
+        console.log(editor);
+    })
+    .catch(error => {
+        console.error(error);
+    });
 </script>
 @endpush
