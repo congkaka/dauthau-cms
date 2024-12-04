@@ -13,7 +13,7 @@ class RegulationController extends Controller
     {
         $regulations = Regulation::paginate(10);
         foreach($regulations as $regulation) {
-            $regulation->download_path = 'https://admin.dauthau.online/downloads/' . $regulation->download_path;
+            $regulation->download_path = $regulation->download_path;
         }
 
         return Helper::response($regulations, 200);
