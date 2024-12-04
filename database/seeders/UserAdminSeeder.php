@@ -20,39 +20,50 @@ class UserAdminSeeder extends Seeder
      */
     public function run()
     {
-        // dd(Permission::create(['name' => 'Category manager']));
-        //Create user account
-        $user = User::create([
-            'name' => 'congkaka',
-            'username' => 'congkaka',
-            'level' => \App\Enums\MemberLevel::ADMIN->value,
-            'phone' => '0347576968',
-            'email' => 'congkaka@gmail.com',
-            'is_admin' => true,
-            'password' => Hash::make('congkaka123'),
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
-        // $user = User::where('name', 'congkaka')->first();
-        $menuAdmin = config('menu-admin');
-        $permissionList = Arr::pluck($menuAdmin, 'text');
-        $permissionOther = [
-            'decentralization'
-        ];
-        // $permissionOther = [];
-        //Create Permissions List
-        $permissionList = array_merge($permissionList, $permissionOther);
-        foreach ($permissionList as $permission) {
-            Permission::create(['name' => $permission]);
-        };
-        //Create Roles List
-        $enumRoles = (\App\Enums\MemberLevel::getMap());
-        foreach ($enumRoles as $key => $role) {
-            Role::create(['name' => $key]);
+        try {
+            DB::beginTransaction();
+            // dd(Permission::create(['name' => 'Category manager']));
+            //Create user account
+            // $user = User::create([
+            //     'name' => 'Admin',
+            //     'username' => 'admin',
+            //     'level' => \App\Enums\MemberLevel::ADMIN->value,
+            //     'phone' => '0935205656',
+            //     'email' => 'admin@gmail.com',
+            //     'is_admin' => true,
+            //     'password' => Hash::make('admin@2024'),
+            //     'created_at' => date('Y-m-d H:i:s'),
+            //     'updated_at' => date('Y-m-d H:i:s')
+            // ]);
+            $user = User::where('name', 'Admin')->first();
+            $menuAdmin = config('menu-admin');
+            $permissionList = Arr::pluck($menuAdmin, 'text');
+            $permissionOther = [
+                'decentralization'
+            ];
+            // $permissionOther = [];
+            //Create Permissions List
+            $permissionList = array_merge($permissionList, $permissionOther);
+            foreach ($permissionList as $permission) {
+                Permission::updateOrCreate(
+                    ['name' => $permission],
+                    ['name' => $permission]
+                );
+            };
+            //Create Roles List
+            $enumRoles = (\App\Enums\MemberLevel::getMap());
+            foreach ($enumRoles as $key => $role) {
+                Role::updateOrCreate(
+                    ['name' => $key],
+                    ['name' => $key]
+                );
+            }
+            //Create model_has_permissions
+            $user->syncPermissions($permissionList);
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            dd($th);
         }
-        //Create model_has_permissions
-        $user->syncPermissions($permissionList);
-        
-
     }
 }
