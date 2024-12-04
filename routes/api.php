@@ -44,6 +44,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::get('/slides', [SlideController::class, 'getSlides']);
     Route::get('/blogs', [BlogController::class, 'getBlogs']);
+    Route::get('/blog/{alias}', [BlogController::class, 'getBlogAlias']);
+    Route::get('/blog-related', [BlogController::class, 'getBlogRelated']);
     Route::get('/contact-info', [ContactInformationController::class, 'getContactInformation']);
     Route::get('/experts', [ExpertController::class, 'getExpert']);
     Route::get('/partners', [PartnerController::class, 'getPartner']);

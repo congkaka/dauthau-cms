@@ -27,7 +27,13 @@ class Post extends Model
         'status'
     ];
 
-    public function categories() {
+    public function categories()
+    {
         return $this->belongsTo(Category::class, 'category_id');
+    }
+
+    public function related()
+    {
+        return $this->hasMany(Post::class, 'category_id', 'category_id');
     }
 }
