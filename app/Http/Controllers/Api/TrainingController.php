@@ -10,8 +10,13 @@ use Illuminate\Http\Request;
 
 class TrainingController extends Controller
 {
-    public function getTraining($alias){
-        $data = Training::where('alias', $alias)->first();
+    public function getTraining($alias, Request $request){
+
+        $data = Training::where('alias', $alias);
+
+        if($request->has('training_apk')) $data->where('id', $request->get('training_apk'));
+
+        $data = $data->first();
 
         return Helper::response($data, 200);
     }
