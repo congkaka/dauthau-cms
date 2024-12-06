@@ -26,6 +26,7 @@ class TrainingController extends Controller
         $data = Category::with(['training'])
         ->where('name', '<>', 'Tin Tức')
         ->whereHas('training')
+        ->orderBy('id')
         ->get();
 
         return Helper::response($data, 200);
