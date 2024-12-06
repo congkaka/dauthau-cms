@@ -44,6 +44,7 @@ class CategoryController extends CrudController
         $validatedData = $request->validate([
             'name' => 'required',
             'image' => '',
+            'parent_id' => '',
         ],
             [
                 'name.required' => 'Name không được trống'
@@ -53,5 +54,12 @@ class CategoryController extends CrudController
         $validatedData['slug'] = makeSlug($validatedData['name']);
 
         return $validatedData;
+    }
+
+    public function edit(int $id, $data = [])
+    {
+        $data['parentCates'] = \App\Models\Category::whereNull('parent_id')->get();
+
+        return parent::edit($id, $data);
     }
 }

@@ -1,4 +1,7 @@
 @extends('admin.layouts.app')
+@php
+$parentCates = \App\Models\Category::whereNull('parent_id')->get();
+@endphp
 @section('content')
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <!--begin::Toolbar-->
@@ -43,6 +46,16 @@
                             <i class="bi bi-search"></i>
                         </button>
                         <!--end::Search-->
+                        <div class="row" style="margin-left: 20px;">
+                            <div class="col-12">
+                                <select name="parent_id" class="form-control" onchange="this.form.submit()">
+                                    <option value="">Chọn Danh mục cha</option>
+                                    @foreach($parentCates as $category)
+                                    <option value="{{$category->id}}" {{ $category->id == Request::get('category_id')?'selected' : '' }}>{{$category->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                     </form>
                     <!--end::Card title-->
                     <!--begin::Card toolbar-->
@@ -63,6 +76,7 @@
                             <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                 <th>ID</th>
                                 <th>Name</th>
+                                <th>Parent</th>
                                 <th>Action</th>
                             </tr>
                             <!--end::Table row-->
@@ -78,6 +92,13 @@
                                 </td>
                                 <td>
                                     {{$i['name']}}
+                                </td>
+                                <td>
+                                    @php
+                                        foreach($parentCates as $parent) {
+                                            if($parent->id == $i['parent_id']) echo $parent->name;
+                                        }
+                                    @endphp
                                 </td>
                                 <td>
                                     <a href="{{route('admin.categories.edit', $i['id'])}}" class="menu-link"><i class="bi bi-pencil-square text-warning pe-3"></i></a>
@@ -122,7 +143,19 @@
                                     <input type="text" name="name" class="form-control name" value="">
                                     <input type="hidden" name="id" class="form-control id">
                                 </div>
+
+                                <label class="col-lg-4 col-form-label fw-bold fs-6">Danh mục cha</label>
+                                <div class="col-lg-8 fv-row">
+                                    <select name="parent_id" class="form-control col-mb-5">
+                                        <option value="">----- Chọn ------</option>
+                                        @foreach($parentCates as $category)
+                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                
                             </div>
+                            
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-end py-6 px-9">
