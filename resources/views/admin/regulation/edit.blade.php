@@ -84,10 +84,22 @@
                                     <div class="mb-10"></div>
 
                                     <div class="mb-10 fv-row">
-                                        <label class="col-lg-4 col-form-label fw-bold fs-6">Loại</label>
+                                        <label class="col-lg-4 col-form-label fw-bold fs-6">Loại văn bản</label>
                                         <select name="type" required class="form-select mb-2" data-placeholder="Select an option">
-                                            @foreach(\App\Enums\Regulation::type() as $v => $l)
-                                            <option {{$item->type == $v ? 'selected' : ''}} value="{{$l}}">{{$l}}</option>
+                                            <option value="">--- Chọn ---</option>
+
+                                            @foreach($documentTypes as $v => $document)
+                                            <option {{$item->type == $document->id ? 'selected' : ''}} value="{{$document['id']}}">{{$document['name']}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-10 fv-row">
+                                        <label class="col-lg-4 col-form-label fw-bold fs-6">Loại hiệu lực</label>
+                                        <select name="validity_type" required class="form-select mb-2" data-placeholder="Select an option">
+                                            <option value="">--- Chọn ---</option>
+                                            @foreach($validityTypes as $v => $validity)
+                                            <option {{$item->validity_type == $validity->id ? 'selected' : ''}} value="{{$validity['id']}}">{{$validity['name']}}</option>
                                             @endforeach
                                         </select>
                                     </div>

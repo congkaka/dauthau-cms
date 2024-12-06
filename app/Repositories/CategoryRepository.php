@@ -13,6 +13,6 @@ class CategoryRepository extends EloquentRepository
     }
 
     public function getCateIgnorePost() {
-        return Category::whereNotIn('slug', ['tin-tuc'])->get();
+        return Category::where('parent_id', 7)->get();
     }
 }

@@ -19,6 +19,7 @@ class Regulation extends Model
         'effectiveDate',
         'attachment',
         'download_path',
-        'type'
+        'type',
+        'validity_type'
     ];
 }
