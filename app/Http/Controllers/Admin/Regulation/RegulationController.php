@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Regulation;
 
 use App\Http\Controllers\Admin\CrudController;
+use App\Models\Category;
 use App\Repositories\RegulationRepository;
 
 class RegulationController extends CrudController
@@ -37,6 +38,8 @@ class RegulationController extends CrudController
     {
         $data['categories'] = (new \App\Repositories\CategoryRepository())->getAll();
         $data['stores'] = (new \App\Repositories\StoreRepository())->getAll();
+        $data['documentTypes'] = Category::where('parent_id', '=', 8)->get();
+        $data['validityTypes'] = Category::where('parent_id', '=', 9)->get();
 
         return parent::create($data);
     }
@@ -64,6 +67,8 @@ class RegulationController extends CrudController
     {
         $data['categories'] = (new \App\Repositories\CategoryRepository())->getAll();
         $data['stores'] = (new \App\Repositories\StoreRepository())->getAll();
+        $data['documentTypes'] = Category::where('parent_id', '=', 8)->get();
+        $data['validityTypes'] = Category::where('parent_id', '=', 9)->get();
 
         return parent::edit($id, $data);
     }

@@ -51,7 +51,7 @@ $parentCates = \App\Models\Category::whereNull('parent_id')->get();
                                 <select name="parent_id" class="form-control" onchange="this.form.submit()">
                                     <option value="">Chọn Danh mục cha</option>
                                     @foreach($parentCates as $category)
-                                    <option value="{{$category->id}}" {{ $category->id == Request::get('category_id')?'selected' : '' }}>{{$category->name}}</option>
+                                    <option value="{{$category->id}}" {{ $category->id == Request::get('parent_id')?'selected' : '' }}>{{$category->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
