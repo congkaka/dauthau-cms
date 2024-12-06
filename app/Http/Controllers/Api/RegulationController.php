@@ -15,6 +15,8 @@ class RegulationController extends Controller
         $regulations = Regulation::query();
 
         if(!empty($request->title)) $regulations->where('title', 'like', '%'.$request->title.'%');
+        if(!empty($request->type)) $regulations->where('type', '=', $request->type);
+        if(!empty($request->validity_type)) $regulations->where('validity_type', '=', $request->validity_type);
 
         $regulations = $regulations
         ->paginate(10);
