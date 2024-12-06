@@ -16,7 +16,8 @@ class Category extends Model
         'name',
         'image',
         'slug',
-        'is_active'
+        'is_active',
+        'parent_id'
     ];
 
     protected $casts = [];
@@ -24,5 +25,15 @@ class Category extends Model
     public function training(): HasMany
     {
         return $this->hasMany(Training::class);
+    }
+
+    public function parent()
+    {
+        return $this->belongsTo(Category::class, 'parent_id');
+    }
+
+    public function children()
+    {
+        return $this->hasMany(Category::class, 'parent_id');
     }
 }

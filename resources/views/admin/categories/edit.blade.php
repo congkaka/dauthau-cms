@@ -52,6 +52,14 @@
                                             <label class="required form-label">Name</label>
                                             <!--end::Label-->
                                             <input type="text" name="name" value="{{$item->name}}" class="form-control"/>
+
+                                            <label class="form-label mt-5">Danh mục cha</label>
+                                            <select name="parent_id" class="form-control">
+                                                <option value="">----- Chọn ------</option>
+                                                @foreach($parentCates as $category)
+                                                <option value="{{$category->id}}" {{ $category->id == $item->parent_id?'selected' : '' }}>{{$category->name}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                 </div>

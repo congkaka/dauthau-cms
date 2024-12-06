@@ -57,6 +57,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/update-booking', [BookingController::class, 'UpdateBooking']);
 
     Route::get('/regulation', [RegulationController::class, 'getRegulation']);
+    Route::get('/document-type', [RegulationController::class, 'getDocumentType']);
+    Route::get('/validity-type', [RegulationController::class, 'getValidityType']);
 
 
 
