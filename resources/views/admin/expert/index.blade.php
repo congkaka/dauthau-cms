@@ -1,4 +1,7 @@
 @extends('admin.layouts.app')
+@php
+$parentCates = \App\Models\Category::where('parent_id', 22)->get();
+@endphp
 @section('content')
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <!--begin::Toolbar-->
@@ -41,6 +44,16 @@
                             <i class="bi bi-search"></i>
                         </button>
                         <!--end::Search-->
+                        <div class="row" style="margin-left: 20px;">
+                            <div class="col-12">
+                                <select name="type" class="form-control" onchange="this.form.submit()">
+                                    <option value="">Tất cả</option>
+                                    @foreach($parentCates as $category)
+                                    <option value="{{$category->id}}" {{ $category->id == Request::get('type')?'selected' : '' }}>{{$category->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                     </form>
                     <!--end::Card title-->
                     <!--begin::Card toolbar-->

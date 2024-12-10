@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Expert extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'description', 'position', 'link', 'image'];
+    protected $fillable = ['name', 'description', 'position', 'link', 'image', 'current_position', 'type'];
 }
