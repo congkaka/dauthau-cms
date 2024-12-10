@@ -47,6 +47,11 @@
                                     </div>
 
                                     <div class="mb-10 fv-row">
+                                        <label class="form-label">Current Position</label>
+                                        <input type="text" name="current_position" value="{{ $item->current_position }}" class="form-control" placeholder="Enter the current position...."/>
+                                    </div>
+
+                                    <div class="mb-10 fv-row">
                                         <label class="required form-label">Description</label>
                                         <textarea class="form-control" name="description" aria-label="description">{{ $item->description }}</textarea>
                                     </div>
@@ -54,6 +59,16 @@
                                     <div class="mb-10 fv-row">
                                         <label class="required form-label">Position</label>
                                         <input type="number" name="position" value="{{ $item->position }}" class="form-control" />
+                                    </div>
+
+                                    <div class="mb-10 fv-row">
+                                        <label class="form-label mt-5">Chuyên gia</label>
+                                        <select name="type" class="form-control">
+                                            <option value="">----- Chọn ------</option>
+                                            @foreach($expertType as $category)
+                                            <option value="{{$category->id}}" {{ $category->id == $item->type?'selected' : '' }}>{{$category->name}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
 
                                     <x-admin.single-img-upload inputName="image" fillValue="{{$item->image}}" />

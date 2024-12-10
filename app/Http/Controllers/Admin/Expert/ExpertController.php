@@ -38,8 +38,7 @@ class ExpertController extends CrudController
      */
     public function create($data = [])
     {
-        $data['categories'] = (new \App\Repositories\CategoryRepository())->getAll();
-        $data['stores'] = (new \App\Repositories\StoreRepository())->getAll();
+        $data['expertType'] = \App\Models\Category::where('parent_id', 22)->get();
 
         return parent::create($data);
     }
@@ -65,32 +64,8 @@ class ExpertController extends CrudController
      */
     public function edit(int $id, $data = [])
     {
-        $data['categories'] = (new \App\Repositories\CategoryRepository())->getAll();
-        $data['stores'] = (new \App\Repositories\StoreRepository())->getAll();
+        $data['expertType'] = \App\Models\Category::where('parent_id', 22)->get();
 
         return parent::edit($id, $data);
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    // public function update(Request $request, $id)
-    // {
-    //     dd($request->input());
-    // }
-
-    // public function updateValidated(Request $request, int $id): array
-    // {
-    //     $data['featured'] = $request->input('featured') ? true : false;
-
-    //     return $data;
-    // }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    // public function destroy(string $id)
-    // {
-    //     //
-    // }
 }
