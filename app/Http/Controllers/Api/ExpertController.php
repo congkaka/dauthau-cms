@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class ExpertController extends Controller
 {
     public function getExpert(){
-        $data = Expert::get();
+        $data = Expert::whereNull('type')->get();
 
         return Helper::response($data, 200);
     }
