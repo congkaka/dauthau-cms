@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin\Comment;
 
 use App\Http\Controllers\Admin\CrudController;
+use App\Models\Comment;
 use App\Repositories\EloquentRepository;
 use App\Repositories\CommentRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends CrudController
 {
@@ -30,6 +32,27 @@ class CommentController extends CrudController
     public function getViewFolder(): string
     {
         return 'admin.comments';
+    }
+
+    public function index(Request $request, $data = [])
+    {
+        
+        $query = $request->all();
+        
+        $items = Comment::with(['children'])->whereNull('parent_id');
+        foreach ($query as $q => $v) {
+            if (in_array($q, (new Comment())->getFillable()) && $v) {
+                $items->where($q, 'like', '%'.$v.'%');
+            }
+        }
+        
+        $items->orderByDesc('id');
+
+        $size = $request->size ? $request->size : 15;
+
+        $data['items'] = $items->paginate($size);
+
+        return view('admin.comments.index', $data);
     }
 
     /**
@@ -59,5 +82,28 @@ class CommentController extends CrudController
         $data['posts'] = \App\Models\Post::get(['id', 'title']);
 
         return parent::edit($id, $data);
+    }
+
+    public function reply(Request $request) {
+        try {
+            if(!empty($request->comment_id) && !empty($request->comment_reply)) {
+
+                $comment = new Comment();
+                $comment->content = $request->comment_reply;
+                $comment->parent_id = (int) $request->comment_id;
+                $comment->user_id = Auth::user()->id;
+                $comment->status = 1;
+
+                $comment->save();
+            }
+
+            return redirect('comments');
+
+        } catch (\Throwable $th) {
+            dd($th);
+            return redirect('comments');
+        }
+        
+
     }
 }

@@ -44,8 +44,8 @@
                                 <h1 class="fw-bolder fs-2qx pb-5 pb-md-10" style="color: #986923;">Welcome to Admin Tri Luc Viet</h1>
                                 <!--end::Title-->
                                 <!--begin::Description-->
-                                <p class="fw-bold fs-2" style="color: #986923;">Tư vấn đào tạo
-                                    <br />đấu thầu chuyên nghiệp
+                                <p class="fw-bold fs-2" style="color: #986923;">Tư Vấn Đào Tạo
+                                    <br />Đấu Thầu Chuyên Nghiệp
                                 </p>
                                 <!--end::Description-->
                             </div>

@@ -70,7 +70,7 @@
                                             <select name="post_id" required class="form-select mb-2" data-placeholder="Select an option">
                                                 <option value="">----- Chọn ------</option>
                                                 @foreach($posts as $v => $post)
-                                                <option value="{{$post->id}}">{{$post->title}}</option>
+                                                <option {{$item->post_id == $post->id ? 'selected' : ''}} value="{{$post->id}}">{{$post->title}}</option>
                                                 @endforeach
                                             </select>
                                         </div>

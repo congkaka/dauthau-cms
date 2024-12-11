@@ -35,6 +35,7 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
     // Router Comments
     Route::group([], function () {
         Route::resource('comments', \App\Http\Controllers\Admin\Comment\CommentController::class, ["as"=>"admin"]);
+        Route::post('reply', [\App\Http\Controllers\Admin\Comment\CommentController::class, 'reply'])->name('admin.comments.reply');
     });
 
     // Router User

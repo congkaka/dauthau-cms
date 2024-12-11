@@ -11,7 +11,7 @@ $posts = \App\Models\Post::get(['id', 'title']);
             <!--begin::Page title-->
             <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
                 <!--begin::Title-->
-                <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Category</h1>
+                <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Comment</h1>
                 <!--end::Title-->
                 <!--begin::Separator-->
                 <span class="h-20px border-gray-300 border-start mx-4"></span>
@@ -94,7 +94,9 @@ $posts = \App\Models\Post::get(['id', 'title']);
                                 <td>{{$i['created_at']}}</td>
                                 <td>
                                     <a href="{{route('admin.comments.edit', $i['id'])}}" class="menu-link"><i class="bi bi-pencil-square text-warning pe-3"></i></a>
+                                    <i class="bi bi-reply text-primary pe-3" data-id="{{$i['id']}}" data-bs-toggle="modal" data-bs-target="#kt_modal_reply"></i>
                                     <a href="{{route('admin.comments.destroy', $i['id'])}}" data-kt-customer-table-filter="delete_row" class="menu-link delete_btn"><i class="bi bi-trash text-danger pe-3"></i></a>
+                                    <button class="text-gray">{{ count($i['children']) }}</button>
                                 </td>
                             </tr>
                             @endforeach
@@ -114,7 +116,7 @@ $posts = \App\Models\Post::get(['id', 'title']);
     <div class="modal-dialog modal-dialog-centered mw-900px">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Create Category</h2>
+                <h2>Create Comment</h2>
                 <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
                     <i class="ki-duotone ki-cross fs-1">
                         <span class="path1"></span><span class="path2"></span>
@@ -180,6 +182,55 @@ $posts = \App\Models\Post::get(['id', 'title']);
         </div>
     </div>
 </div>
+
+<!-- //modal reply -->
+<div class="modal fade" id="kt_modal_reply" tabindex="-1" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered mw-900px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Reply Comment</h2>
+                <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                    <i class="ki-duotone ki-cross fs-1">
+                        <span class="path1"></span><span class="path2"></span>
+                    </i>
+                </div>
+            </div>
+            <div class="modal-body py-lg-10 px-lg-10">
+                <form id="kt_account_profile_details_form" class="form" action="{{route('admin.comments.reply')}}" method="post">
+                    @csrf
+                    <input type="hidden" id="comment_id" name="comment_id">
+                    <div class="card-body border-top p-9">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <textarea class="form-control" name="comment_reply" id="comment_reply" rows="5" aria-label="description" placeholder="Enter reply..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex justify-content-end py-6 px-9">
+                        <button type="submit" class="btn btn-primary" id="kt_account_profile_details_submit">Save
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- // -->
+
 @endsection
 @push('custom-scripts')
+<script>
+    $('.bi-reply').on('click', function() {
+        $('#comment_id').val($(this).data('id'));
+    })
+
+    ClassicEditor
+    .create(document.querySelector('#comment_reply'))
+    .then(editor => {
+        console.log(editor);
+    })
+    .catch(error => {
+        console.error(error);
+    });
+</script>
 @endpush

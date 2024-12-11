@@ -23,7 +23,7 @@ return [
 
     [
         'text' => 'Thảo luận',
-        'icon' => 'bi bi-pencil-fill',
+        'icon' => 'bi bi-chat-right-quote-fill',
         'route' => 'admin.comments.index',
         'activeIs' => 'admin.comments.*',
     ],

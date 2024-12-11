@@ -17,4 +17,9 @@ class Comment extends Model
         'post_id',
         'status',
     ];
+
+    public function children()
+    {
+        return $this->hasMany(Comment::class, 'parent_id');
+    }
 }
