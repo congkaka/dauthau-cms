@@ -21,6 +21,13 @@ return [
         'activeIs' => 'admin.blogs.*',
     ],
 
+    [
+        'text' => 'Thảo luận',
+        'icon' => 'bi bi-pencil-fill',
+        'route' => 'admin.comments.index',
+        'activeIs' => 'admin.comments.*',
+    ],
+
     // [
     //     'text' => 'Slides manager',
     //     'icon' => 'bi bi-book',

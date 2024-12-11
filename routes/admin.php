@@ -31,6 +31,12 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
     Route::group([], function () {
         Route::resource('categories', \App\Http\Controllers\Admin\Category\CategoryController::class, ["as"=>"admin"]);
     });
+
+    // Router Comments
+    Route::group([], function () {
+        Route::resource('comments', \App\Http\Controllers\Admin\Comment\CommentController::class, ["as"=>"admin"]);
+    });
+
     // Router User
     Route::group([], function () {
         Route::resource('user', \App\Http\Controllers\Admin\User\UserController::class, array("as"=>"admin"));
