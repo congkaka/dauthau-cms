@@ -10,7 +10,7 @@
                 data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}"
                 class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
                 <!--begin::Title-->
-                <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Cập nhật Phản hồi</h1>
+                <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Cập nhật thảo luận</h1>
                 <!--end::Title-->
                 <!--begin::Separator-->
                 <span class="h-20px border-gray-300 border-start mx-4"></span>
@@ -25,7 +25,7 @@
     <div class="post d-flex flex-column-fluid" id="kt_post">
         <!--begin::Container-->
         <div id="kt_content_container" class="container-xxl">
-            <form action="{{route('admin.comments.update', $item->id)}}"
+            <form action="{{route('admin.discussions.update', $item->id)}}"
                 class="form d-flex flex-column flex-lg-row gap-7 gap-lg-10" method="POST">
                 @method('PUT')
                 @csrf
@@ -66,16 +66,6 @@
                                         </div>
 
                                         <div class="mb-10 fv-row">
-                                            <label class="col-lg-4 col-form-label fw-bold fs-6">Blog</label>
-                                            <select name="post_id" required class="form-select mb-2" data-placeholder="Select an option">
-                                                <option value="">----- Chọn ------</option>
-                                                @foreach($posts as $v => $post)
-                                                <option {{$item->post_id == $post->id ? 'selected' : ''}} value="{{$post->id}}">{{$post->title}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-
-                                        <div class="mb-10 fv-row">
                                             <label class="col-lg-4 col-form-label fw-bold fs-6">Published</label>
                                             <select name="status" required class="form-select mb-2" data-placeholder="Select an option">
                                                 @foreach(\App\Enums\Regulation::getMap() as $v => $l)
@@ -95,7 +85,7 @@
                     <!--end::General options-->
                     <div class="d-flex justify-content-end">
                         <!--begin::Button-->
-                        <a href="{{route('admin.comments.index')}}" id="kt_ecommerce_add_product_cancel"
+                        <a href="{{route('admin.discussions.index')}}" id="kt_ecommerce_add_product_cancel"
                             class="btn btn-light me-5">Back</a>
                         <!--end::Button-->
                         <!--begin::Button-->
