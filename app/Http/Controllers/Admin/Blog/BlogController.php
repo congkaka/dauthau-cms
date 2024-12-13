@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Blog;
 
 use App\Http\Controllers\Admin\CrudController;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Repositories\BlogRepository;
 use App\Repositories\EloquentRepository;
 use Illuminate\Http\Request;
@@ -39,8 +40,7 @@ class BlogController extends CrudController
      */
     public function create($data = [])
     {
-        $data['categories'] = (new \App\Repositories\CategoryRepository())->getAll();
-        // $data['stores'] = (new \App\Repositories\StoreRepository())->getAll();
+        $data['categories'] = Category::where('slug', 'tin-tuc')->get();
 
         return parent::create($data);
     }
@@ -66,8 +66,7 @@ class BlogController extends CrudController
      */
     public function edit(int $id, $data = [])
     {
-        $data['categories'] = (new \App\Repositories\CategoryRepository())->getAll();
-        // $data['stores'] = (new \App\Repositories\StoreRepository())->getAll();
+        $data['categories'] = Category::where('slug', 'tin-tuc')->get();
 
         return parent::edit($id, $data);
     }

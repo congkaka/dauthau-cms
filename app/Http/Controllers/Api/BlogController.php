@@ -24,7 +24,7 @@ class BlogController extends Controller
     {
         $data = Post::with(['related' => function ($query) use ($alias) {
             $query->where('slug', '<>', $alias);
-        }])->where(['slug' => $alias])->first();
+        }, 'comments.children.user'])->where(['slug' => $alias])->first();
 
         return Helper::response($data, 200);
     }

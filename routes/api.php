@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Api\BlogController;
 use App\Http\Controllers\Api\BookingController;
+use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\ContactInformationController;
+use App\Http\Controllers\Api\DiscussionController;
 use App\Http\Controllers\Api\ExpertController;
 use App\Http\Controllers\Api\PartnerController;
 use App\Http\Controllers\Api\RegulationController;
@@ -23,17 +25,17 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+
 Route::post('/tokens/create', function (Request $request) {
     $user = User::where('email', $request->email)->first();
 
     if ($user && Hash::check($request->password, $user->password)) {
         $token = $user->createToken('token-global');
- 
+
         return ['token' => $token->plainTextToken];
     } else {
         return response()->json(['error' => 'Unauthorized'], 401);
     }
-    
 });
 
 // API routes for authenticated users only
@@ -62,5 +64,9 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/validity-type', [RegulationController::class, 'getValidityType']);
 
 
+    Route::get('/discussions', [DiscussionController::class, 'getDiscussions']);
+    Route::post('/discussion/add', [DiscussionController::class, 'addDiscussion']);
+    Route::get('/discussion/{id}', [DiscussionController::class, 'getDiscussionDetails']);
 
+    Route::post('/comment/add', [CommentController::class, 'addComment']);
 });

@@ -22,10 +22,17 @@ return [
     ],
 
     [
-        'text' => 'Thảo luận',
+        'text' => 'Phản hồi bài viết',
         'icon' => 'bi bi-chat-right-quote-fill',
         'route' => 'admin.comments.index',
         'activeIs' => 'admin.comments.*',
+    ],
+
+    [
+        'text' => 'Thảo luận cùng chuyên gia',
+        'icon' => 'bi bi-send-plus',
+        'route' => 'admin.discussions.index',
+        'activeIs' => 'admin.discussions.*',
     ],
 
     // [

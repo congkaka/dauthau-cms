@@ -1,7 +1,4 @@
 @extends('admin.layouts.app')
-@php
-$posts = \App\Models\Post::get(['id', 'title']);
-@endphp
 @section('content')
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <!--begin::Toolbar-->
@@ -11,7 +8,7 @@ $posts = \App\Models\Post::get(['id', 'title']);
             <!--begin::Page title-->
             <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
                 <!--begin::Title-->
-                <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Phản hồi</h1>
+                <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Thảo luận</h1>
                 <!--end::Title-->
                 <!--begin::Separator-->
                 <span class="h-20px border-gray-300 border-start mx-4"></span>
@@ -66,7 +63,6 @@ $posts = \App\Models\Post::get(['id', 'title']);
                             <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                 <th>Tác giả</th>
                                 <th>Bình luận</th>
-                                <th>Trả lời cho</th>
                                 <th>Đã đăng vào</th>
                                 <th>Hành động</th>
                             </tr>
@@ -84,18 +80,11 @@ $posts = \App\Models\Post::get(['id', 'title']);
                                 <td>
                                     {{$i['content']}}
                                 </td>
-                                <td>
-                                    @php
-                                    foreach($posts as $post) {
-                                    if($post->id == $i['post_id']) echo $post->title;
-                                    }
-                                    @endphp
-                                </td>
                                 <td>{{$i['created_at']}}</td>
                                 <td>
-                                    <a href="{{route('admin.comments.edit', $i['id'])}}" class="menu-link"><i class="bi bi-pencil-square text-warning pe-3"></i></a>
+                                    <a href="{{route('admin.discussions.edit', $i['id'])}}" class="menu-link"><i class="bi bi-pencil-square text-warning pe-3"></i></a>
                                     <i class="bi bi-reply text-primary pe-3" data-id="{{$i['id']}}" data-bs-toggle="modal" data-bs-target="#kt_modal_reply"></i>
-                                    <a href="{{route('admin.comments.destroy', $i['id'])}}" data-kt-customer-table-filter="delete_row" class="menu-link delete_btn"><i class="bi bi-trash text-danger pe-3"></i></a>
+                                    <a href="{{route('admin.discussions.destroy', $i['id'])}}" data-kt-customer-table-filter="delete_row" class="menu-link delete_btn"><i class="bi bi-trash text-danger pe-3"></i></a>
                                     <button class="text-gray">{{ count($i['children']) }}</button>
                                 </td>
                             </tr>
@@ -116,7 +105,7 @@ $posts = \App\Models\Post::get(['id', 'title']);
     <div class="modal-dialog modal-dialog-centered mw-900px">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Thêm phản hồi</h2>
+                <h2>Thêm Thảo luận</h2>
                 <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
                     <i class="ki-duotone ki-cross fs-1">
                         <span class="path1"></span><span class="path2"></span>
@@ -124,7 +113,7 @@ $posts = \App\Models\Post::get(['id', 'title']);
                 </div>
             </div>
             <div class="modal-body py-lg-10 px-lg-10">
-                <form id="kt_account_profile_details_form" class="form" action="{{route('admin.comments.store')}}" method="post">
+                <form id="kt_account_profile_details_form" class="form" action="{{route('admin.discussions.store')}}" method="post">
                     @csrf
                     <div class="card-body border-top p-9">
                         <div class="row">
@@ -148,17 +137,6 @@ $posts = \App\Models\Post::get(['id', 'title']);
                                     <span class="input-group-text">Content</span>
                                     <textarea class="form-control" name="content" rows="4" aria-label="description" placeholder="Enter content..."></textarea>
                                 </div>
-
-                                <div class="mb-10 fv-row">
-                                    <label class="col-lg-4 col-form-label fw-bold fs-6">Blog</label>
-                                    <select name="post_id" required class="form-select mb-2" data-placeholder="Select an option">
-                                        <option value="">----- Chọn ------</option>
-                                        @foreach($posts as $v => $post)
-                                        <option value="{{$post->id}}">{{$post->title}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
                                 <div class="mb-10 fv-row">
                                     <label class="col-lg-4 col-form-label fw-bold fs-6">Published</label>
                                     <select name="status" required class="form-select mb-2" data-placeholder="Select an option">
@@ -188,7 +166,7 @@ $posts = \App\Models\Post::get(['id', 'title']);
     <div class="modal-dialog modal-dialog-centered mw-900px">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Trả lời phản hồi</h2>
+                <h2>Trả lời Thảo luận</h2>
                 <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
                     <i class="ki-duotone ki-cross fs-1">
                         <span class="path1"></span><span class="path2"></span>
@@ -196,7 +174,7 @@ $posts = \App\Models\Post::get(['id', 'title']);
                 </div>
             </div>
             <div class="modal-body py-lg-10 px-lg-10">
-                <form id="kt_account_profile_details_form" class="form" action="{{route('admin.comments.reply')}}" method="post">
+                <form id="kt_account_profile_details_form" class="form" action="{{route('admin.discussions.reply')}}" method="post">
                     @csrf
                     <input type="hidden" id="comment_id" name="comment_id">
                     <div class="card-body border-top p-9">

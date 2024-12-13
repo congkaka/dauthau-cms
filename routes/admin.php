@@ -38,6 +38,12 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
         Route::post('reply', [\App\Http\Controllers\Admin\Comment\CommentController::class, 'reply'])->name('admin.comments.reply');
     });
 
+    // Router Discussions
+    Route::group([], function () {
+        Route::resource('discussions', \App\Http\Controllers\Admin\Discussion\DiscussionController::class, ["as"=>"admin"]);
+        Route::post('discussion/reply', [\App\Http\Controllers\Admin\Discussion\DiscussionController::class, 'reply'])->name('admin.discussions.reply');
+    });
+
     // Router User
     Route::group([], function () {
         Route::resource('user', \App\Http\Controllers\Admin\User\UserController::class, array("as"=>"admin"));
