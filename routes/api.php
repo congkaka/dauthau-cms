@@ -53,6 +53,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/group-experts', [ExpertController::class, 'groupExpert']);
     Route::get('/partners', [PartnerController::class, 'getPartner']);
     Route::get('/training/{alias}', [TrainingController::class, 'getTraining']);
+    Route::get('/training/Related/{alias}', [TrainingController::class, 'getTrainingRelated']);
     Route::get('/training', [TrainingController::class, 'getAllTraining']);
     Route::get('/training-up-coming', [TrainingController::class, 'getAllTrainingUpComing']);
     Route::get('/training-with-cate', [TrainingController::class, 'getTrainingWithCate']);
