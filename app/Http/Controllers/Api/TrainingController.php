@@ -44,4 +44,12 @@ class TrainingController extends Controller
 
         return Helper::response($data, 200);
     }
+
+    public function getTrainingRelated($alias) {
+        $data = Training::where('alias', $alias)->first();
+        if(empty($data)) return Helper::response([], 200);
+        $related = Training::where('category_id', $data->category_id)->where('id', '!=', $data->id)->get();
+
+        return Helper::response($related, 200);
+    }
 }

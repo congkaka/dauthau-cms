@@ -48,7 +48,7 @@
                             @csrf
                             <div class="row" style="padding: 20px;">
                                 <div class="col-12 mb-2">
-                                    <textarea name="info" rows="4" id="kt_docs_ckeditor_classic" class="form-control">{{$setting['info']}}</textarea>
+                                    <textarea name="info" rows="4" class="form-control">{{$setting['info']}}</textarea>
                                 </div>
                             </div>
                             <div id="highlight_content">
