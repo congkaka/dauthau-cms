@@ -42,12 +42,12 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="mb-10 fv-row">
-                                        <label class="required form-label">Name</label>
+                                        <label class="required form-label">Tên</label>
                                         <input type="text" name="name" value="{{ $item->name }}" class="form-control" />
                                     </div>
 
                                     <div class="mb-10 fv-row">
-                                        <label class="required form-label">Category</label>
+                                        <label class="required form-label">Danh mục</label>
                                         <select name="category_id" required class="form-select mb-2" data-placeholder="Select an option">
                                             @foreach($categories as $category)
                                             <option {{ $item->category_id == $category->id?'selected' : ''}} value="{{$category->id}}">{{$category->name}}</option>
@@ -69,7 +69,7 @@
                                     <div class="mb-10"></div>
 
                                     <div class="mb-10 fv-row">
-                                        <label class="col-lg-4 col-form-label fw-bold fs-6">Published</label>
+                                        <label class="col-lg-4 col-form-label fw-bold fs-6">Trạng thái</label>
                                         <select name="status" required class="form-select mb-2" data-placeholder="Select an option">
                                             @foreach(\App\Enums\bookingStatus::getMap() as $v => $l)
                                             <option {{$item->status == $v ? 'selected' : ''}} value="{{$v}}">{{$l}}</option>
@@ -82,9 +82,9 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-end">
-                        <a href="{{route('admin.booking.index')}}" id="kt_user_cancel" class="btn btn-light me-5">Back</a>
+                        <a href="{{route('admin.booking.index')}}" id="kt_user_cancel" class="btn btn-light me-5">Quay lại</a>
                         <button type="submit" class="btn btn-primary">
-                            <span class="indicator-label">Save</span>
+                            <span class="indicator-label">Lưu</span>
                         </button>
                     </div>
                 </div>

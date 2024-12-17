@@ -39,7 +39,7 @@
                             </div>
                         </div>
                         <div class="card-body pt-0">
-                        <div class="row">
+                            <div class="row">
                                 <div class="col-md-12">
                                     <div class="mb-10 fv-row">
                                         <label class="required form-label">Số</label>
@@ -118,9 +118,9 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-end">
-                        <a href="{{route('admin.regulation.index')}}" id="kt_user_cancel" class="btn btn-light me-5">Back</a>
+                        <a href="{{route('admin.regulation.index')}}" id="kt_user_cancel" class="btn btn-light me-5">Quay lại</a>
                         <button type="submit" class="btn btn-primary">
-                            <span class="indicator-label">Save</span>
+                            <span class="indicator-label">Lưu</span>
                         </button>
                     </div>
                 </div>

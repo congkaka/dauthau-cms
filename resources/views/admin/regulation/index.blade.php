@@ -8,11 +8,11 @@
             <!--begin::Page title-->
             <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
                 <ol class="breadcrumb text-muted fs-6 fw-semibold">
-                    <li class="breadcrumb-item"><a href="" class="">Home</a></li>
-                    <li class="breadcrumb-item text-muted">regulation</li>
+                    <li class="breadcrumb-item"><a href="" class="">Trang chủ</a></li>
+                    <li class="breadcrumb-item text-muted">Văn bản pháp quy</li>
                 </ol>
             </div>
-            <a href="{{route('admin.regulation.create')}}" class="btn btn-sm fw-bold btn-primary">Add</a>
+            <a href="{{route('admin.regulation.create')}}" class="btn btn-sm fw-bold btn-primary">Thêm mới</a>
             <!--end::Page title-->
         </div>
         <!--end::Container-->
@@ -35,7 +35,7 @@
                                 <i class="bi bi-search"></i>
                             </span>
                             <!--end::Svg Icon-->
-                            <input type="text" name="title" data-kt-ecommerce-product-filter="search" class="form-control form-control-solid w-250px ps-14" value="{{Request::get('title')}}" placeholder="Search" />
+                            <input type="text" name="title" data-kt-ecommerce-product-filter="search" class="form-control form-control-solid w-250px ps-14" value="{{Request::get('title')}}" placeholder="Tìm kiếm" />
                         </div>
                         <button type="submit" class="btn btn-success">
                             <i class="bi bi-search"></i>

@@ -42,13 +42,13 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="mb-10 fv-row">
-                                        <label class="required form-label">Name</label>
-                                        <input type="text" name="name" value="" class="form-control" placeholder="Enter name"/>
+                                        <label class="required form-label">Tên</label>
+                                        <input type="text" name="name" value="" class="form-control" placeholder="Enter name" />
                                     </div>
 
                                     <div class="mb-10 fv-row">
                                         <label class="form-label">Current Position</label>
-                                        <input type="text" name="current_position" value="" class="form-control" placeholder="Enter the current position...."/>
+                                        <input type="text" name="current_position" value="" class="form-control" placeholder="Enter the current position...." />
                                     </div>
 
                                     <div class="mb-10 input-group">
@@ -58,7 +58,7 @@
 
                                     <div class="mb-10 fv-row">
                                         <label class="required form-label">Position</label>
-                                        <input type="number" name="position" value="" class="form-control"/>
+                                        <input type="number" name="position" value="" class="form-control" />
                                     </div>
                                     <div class="mb-10 fv-row">
                                         <label class="form-label mt-5">Chuyên gia</label>
@@ -78,9 +78,9 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-end">
-                        <a href="{{route('admin.expert.index')}}" id="kt_user_cancel" class="btn btn-light me-5">Back</a>
+                        <a href="{{route('admin.expert.index')}}" id="kt_user_cancel" class="btn btn-light me-5">Quay lại</a>
                         <button type="submit" class="btn btn-primary">
-                            <span class="indicator-label">Save</span>
+                            <span class="indicator-label">Lưu</span>
                         </button>
                     </div>
                 </div>

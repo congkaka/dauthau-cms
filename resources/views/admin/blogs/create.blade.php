@@ -79,69 +79,69 @@
                                         <textarea class="form-control" name="meta_keywords" aria-label="meta keywords"></textarea>
                                     </div>
 
-                                    {{--  <div class="mb-10 fv-row">
+                                    {{-- <div class="mb-10 fv-row">
                                         <label class="required form-label">Store</label>
                                         <select name="store_id" required class="form-select mb-2" data-placeholder="Select an option">
                                             @foreach($stores as $store)
                                             <option value="{{$store->id}}">{{$store->name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div> --}}
+                                    @endforeach
+                                    </select>
+                                </div> --}}
 
-                                    <div class="mb-10 fv-row">
-                                        <label class="required form-label">Category</label>
-                                        <select name="category_id" required class="form-select mb-2" data-placeholder="Select an option">
-                                            @foreach($categories as $category)
-                                            <option value="{{$category->id}}">{{$category->name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+                                <div class="mb-10 fv-row">
+                                    <label class="required form-label">Danh mục</label>
+                                    <select name="category_id" required class="form-select mb-2" data-placeholder="Select an option">
+                                        @foreach($categories as $category)
+                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
 
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <div class="mb-10 fv-row">
-                                                <label class="col-lg-4 col-form-label fw-bold fs-6">Published</label>
-                                                <select name="status" required class="form-select mb-2" data-placeholder="Select an option">
-                                                    @foreach(\App\Enums\BlogStatus::getMap() as $v => $l)
-                                                    <option value="{{$v}}">{{$l}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="mb-10 fv-row">
+                                            <label class="col-lg-4 col-form-label fw-bold fs-6">Trạng thái</label>
+                                            <select name="status" required class="form-select mb-2" data-placeholder="Select an option">
+                                                @foreach(\App\Enums\BlogStatus::getMap() as $v => $l)
+                                                <option value="{{$v}}">{{$l}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
-                                        <div class="col-6">
-                                            {{-- <div class="mb-10 fv-row">
+                                    </div>
+                                    <div class="col-6">
+                                        {{-- <div class="mb-10 fv-row">
                                                 <label class="col-lg-4 col-form-label fw-bold fs-6">Featured</label>
                                                 <div class="form-check form-switch">
                                                     <input class="form-check-input" name="featured" type="checkbox">
                                                 </div>
                                             </div> --}}
-                                        </div>
                                     </div>
-
                                 </div>
+
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-end">
-                        <a href="{{route('admin.blogs.index')}}" id="kt_user_cancel" class="btn btn-light me-5">Back</a>
-                        <button type="submit" class="btn btn-primary">
-                            <span class="indicator-label">Save</span>
-                        </button>
-                    </div>
                 </div>
-            </form>
+                <div class="d-flex justify-content-end">
+                    <a href="{{route('admin.blogs.index')}}" id="kt_user_cancel" class="btn btn-light me-5">Quay lại</a>
+                    <button type="submit" class="btn btn-primary">
+                        <span class="indicator-label">Lưu</span>
+                    </button>
+                </div>
         </div>
+        </form>
     </div>
+</div>
 </div>
 @endsection
 @push('custom-scripts')
 <script>
     ClassicEditor
-       .create(document.querySelector('#kt_docs_ckeditor_classic'))
-       .then(editor => {
+        .create(document.querySelector('#kt_docs_ckeditor_classic'))
+        .then(editor => {
             console.log(editor);
         })
-       .catch(error => {
+        .catch(error => {
             console.error(error);
         });
 </script>

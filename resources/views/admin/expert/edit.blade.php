@@ -42,13 +42,13 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="mb-10 fv-row">
-                                        <label class="required form-label">Name</label>
+                                        <label class="required form-label">Tên</label>
                                         <input type="text" name="name" value="{{ $item->name }}" class="form-control" />
                                     </div>
 
                                     <div class="mb-10 fv-row">
                                         <label class="form-label">Current Position</label>
-                                        <input type="text" name="current_position" value="{{ $item->current_position }}" class="form-control" placeholder="Enter the current position...."/>
+                                        <input type="text" name="current_position" value="{{ $item->current_position }}" class="form-control" placeholder="Enter the current position...." />
                                     </div>
 
                                     <div class="mb-10 fv-row">
@@ -79,9 +79,9 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-end">
-                        <a href="{{route('admin.expert.index')}}" id="kt_user_cancel" class="btn btn-light me-5">Back</a>
+                        <a href="{{route('admin.expert.index')}}" id="kt_user_cancel" class="btn btn-light me-5">Quay lại</a>
                         <button type="submit" class="btn btn-primary">
-                            <span class="indicator-label">Save</span>
+                            <span class="indicator-label">Lưu</span>
                         </button>
                     </div>
                 </div>

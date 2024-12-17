@@ -8,11 +8,11 @@
             <!--begin::Page title-->
             <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
                 <ol class="breadcrumb text-muted fs-6 fw-semibold">
-                    <li class="breadcrumb-item"><a href="" class="">Home</a></li>
-                    <li class="breadcrumb-item text-muted">training</li>
+                    <li class="breadcrumb-item"><a href="" class="">Trang chủ</a></li>
+                    <li class="breadcrumb-item text-muted">Dịch vụ đào tạo</li>
                 </ol>
             </div>
-            <a href="{{route('admin.training.create')}}" class="btn btn-sm fw-bold btn-primary">Add</a>
+            <a href="{{route('admin.training.create')}}" class="btn btn-sm fw-bold btn-primary">Thêm mới</a>
             <!--end::Page title-->
         </div>
         <!--end::Container-->
@@ -35,7 +35,7 @@
                                 <i class="bi bi-search"></i>
                             </span>
                             <!--end::Svg Icon-->
-                            <input type="text" name="title" data-kt-ecommerce-product-filter="search" class="form-control form-control-solid w-250px ps-14" value="{{Request::get('title')}}" placeholder="Search" />
+                            <input type="text" name="title" data-kt-ecommerce-product-filter="search" class="form-control form-control-solid w-250px ps-14" value="{{Request::get('title')}}" placeholder="Tìm kiếm" />
                         </div>
                         <button type="submit" class="btn btn-success">
                             <i class="bi bi-search"></i>
@@ -54,8 +54,8 @@
                     <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_ecommerce_product_table">
                         <thead>
                             <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                <th>ID</th>
-                                <th>Tên DV</th>
+                                <th>STT</th>
+                                <th>Tên Dịch vụ</th>
                                 <th>Thời gian</th>
                                 <th>Brochure</th>
                                 <th>Trạng thái</th>
@@ -63,12 +63,12 @@
                             </tr>
                         </thead>
                         <tbody class="fw-bold text-gray-600">
-                            @foreach($items as $i)
+                            @foreach($items as $k => $i)
                             <tr>
-                                <td> {{ $i->id }} </td>
+                                <td> {{ $k+1 }} </td>
                                 <td> {{ $i->name}} </td>
                                 <td> {{ $i->time}} </td>
-                                <td> {{ $i->file}} </td>
+                                <td> <a href="{{$i->file}}">{{ $i->link?$i->link:'Download file'}}</a> </td>
                                 <td> {{ $i->status}} </td>
                                 <td style="position: absolute">
                                     <a href="{{route('admin.training.edit', $i->id)}}" class="menu-link"><i class="bi bi-pencil-square text-warning pe-3"></i></a>

@@ -11,13 +11,13 @@ $parentCates = \App\Models\Category::whereNull('parent_id')->get();
             <!--begin::Page title-->
             <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
                 <!--begin::Title-->
-                <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Category</h1>
+                <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Danh mục</h1>
                 <!--end::Title-->
                 <!--begin::Separator-->
                 <span class="h-20px border-gray-300 border-start mx-4"></span>
                 <!--end::Separator-->
             </div>
-            <a href="#" class="btn btn-sm fw-bold btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app">Add</a>
+            <a href="#" class="btn btn-sm fw-bold btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app">Thêm mới</a>
             <!--end::Page title-->
         </div>
         <!--end::Container-->
@@ -40,7 +40,7 @@ $parentCates = \App\Models\Category::whereNull('parent_id')->get();
                                 <i class="bi bi-search"></i>
                             </span>
                             <!--end::Svg Icon-->
-                            <input type="text" name="name" data-kt-ecommerce-product-filter="search" class="form-control form-control-solid w-250px ps-14" value="{{Request::get('name')}}" placeholder="Search" />
+                            <input type="text" name="name" data-kt-ecommerce-product-filter="search" class="form-control form-control-solid w-250px ps-14" value="{{Request::get('name')}}" placeholder="Tìm kiếm" />
                         </div>
                         <button type="submit" class="btn btn-success">
                             <i class="bi bi-search"></i>
@@ -95,9 +95,9 @@ $parentCates = \App\Models\Category::whereNull('parent_id')->get();
                                 </td>
                                 <td>
                                     @php
-                                        foreach($parentCates as $parent) {
-                                            if($parent->id == $i['parent_id']) echo $parent->name;
-                                        }
+                                    foreach($parentCates as $parent) {
+                                    if($parent->id == $i['parent_id']) echo $parent->name;
+                                    }
                                     @endphp
                                 </td>
                                 <td>
@@ -153,9 +153,9 @@ $parentCates = \App\Models\Category::whereNull('parent_id')->get();
                                         @endforeach
                                     </select>
                                 </div>
-                                
+
                             </div>
-                            
+
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-end py-6 px-9">
