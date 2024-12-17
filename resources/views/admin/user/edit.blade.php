@@ -45,9 +45,9 @@
                                     <x-admin.single-img-upload inputName="image" fillValue="{{$item->image}}" />
                                 </div>
                                 <div class="col-md-8">
-                                <div class="mb-10 fv-row">
+                                    <div class="mb-10 fv-row">
                                         <!--begin::Label-->
-                                        <label class="required form-label">Name</label>
+                                        <label class="required form-label">Tên</label>
                                         <!--end::Label-->
                                         <input type="text" name="name" value="{{ $item->name }}" class="form-control" />
                                     </div>
@@ -93,11 +93,11 @@
                     <!--end::General options-->
                     <div class="d-flex justify-content-end">
                         <!--begin::Button-->
-                        <a href="{{route('admin.user.index')}}" id="kt_user_cancel" class="btn btn-light me-5">Back</a>
+                        <a href="{{route('admin.user.index')}}" id="kt_user_cancel" class="btn btn-light me-5">Quay lại</a>
                         <!--end::Button-->
                         <!--begin::Button-->
                         <button type="submit" class="btn btn-primary">
-                            <span class="indicator-label">Save</span>
+                            <span class="indicator-label">Lưu</span>
                         </button>
                         <!--end::Button-->
                     </div>

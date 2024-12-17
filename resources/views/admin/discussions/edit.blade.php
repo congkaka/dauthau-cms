@@ -66,7 +66,7 @@
                                         </div>
 
                                         <div class="mb-10 fv-row">
-                                            <label class="col-lg-4 col-form-label fw-bold fs-6">Published</label>
+                                            <label class="col-lg-4 col-form-label fw-bold fs-6">Trạng thái</label>
                                             <select name="status" required class="form-select mb-2" data-placeholder="Select an option">
                                                 @foreach(\App\Enums\Regulation::getMap() as $v => $l)
                                                 <option {{$item->status == $v ? 'selected' : ''}} value="{{$v}}">{{$l}}</option>
@@ -86,11 +86,11 @@
                     <div class="d-flex justify-content-end">
                         <!--begin::Button-->
                         <a href="{{route('admin.discussions.index')}}" id="kt_ecommerce_add_product_cancel"
-                            class="btn btn-light me-5">Back</a>
+                            class="btn btn-light me-5">Quay lại</a>
                         <!--end::Button-->
                         <!--begin::Button-->
                         <button type="submit" class="btn btn-primary">
-                            <span class="indicator-label">Save</span>
+                            <span class="indicator-label">Lưu</span>
                         </button>
                         <!--end::Button-->
                     </div>

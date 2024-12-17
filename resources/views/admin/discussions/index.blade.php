@@ -14,7 +14,7 @@
                 <span class="h-20px border-gray-300 border-start mx-4"></span>
                 <!--end::Separator-->
             </div>
-            <a href="#" class="btn btn-sm fw-bold btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app">Add</a>
+            <a href="#" class="btn btn-sm fw-bold btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app">Thêm mới</a>
             <!--end::Page title-->
         </div>
         <!--end::Container-->
@@ -37,7 +37,7 @@
                                 <i class="bi bi-search"></i>
                             </span>
                             <!--end::Svg Icon-->
-                            <input type="text" name="content" data-kt-ecommerce-product-filter="search" class="form-control form-control-solid w-250px ps-14" value="{{Request::get('content')}}" placeholder="Search" />
+                            <input type="text" name="content" data-kt-ecommerce-product-filter="search" class="form-control form-control-solid w-250px ps-14" value="{{Request::get('content')}}" placeholder="Tìm kiếm" />
                         </div>
                         <button type="submit" class="btn btn-success">
                             <i class="bi bi-search"></i>
@@ -64,6 +64,7 @@
                                 <th>Tác giả</th>
                                 <th>Bình luận</th>
                                 <th>Đã đăng vào</th>
+                                <th>Trạng thái</th>
                                 <th>Hành động</th>
                             </tr>
                             <!--end::Table row-->
@@ -81,6 +82,13 @@
                                     {{$i['content']}}
                                 </td>
                                 <td>{{$i['created_at']}}</td>
+                                <td>
+                                    @php
+                                    foreach(\App\Enums\Regulation::getMap() as $v => $l){
+                                    if($i['status'] == $v) echo $l;
+                                    }
+                                    @endphp
+                                </td>
                                 <td>
                                     <a href="{{route('admin.discussions.edit', $i['id'])}}" class="menu-link"><i class="bi bi-pencil-square text-warning pe-3"></i></a>
                                     <i class="bi bi-reply text-primary pe-3" data-id="{{$i['id']}}" data-bs-toggle="modal" data-bs-target="#kt_modal_reply"></i>
@@ -138,7 +146,7 @@
                                     <textarea class="form-control" name="content" rows="4" aria-label="description" placeholder="Enter content..."></textarea>
                                 </div>
                                 <div class="mb-10 fv-row">
-                                    <label class="col-lg-4 col-form-label fw-bold fs-6">Published</label>
+                                    <label class="col-lg-4 col-form-label fw-bold fs-6">Trạng thái</label>
                                     <select name="status" required class="form-select mb-2" data-placeholder="Select an option">
                                         @foreach(\App\Enums\Regulation::getMap() as $v => $l)
                                         <option value="{{$v}}">{{$l}}</option>
@@ -203,12 +211,12 @@
     })
 
     ClassicEditor
-    .create(document.querySelector('#comment_reply'))
-    .then(editor => {
-        console.log(editor);
-    })
-    .catch(error => {
-        console.error(error);
-    });
+        .create(document.querySelector('#comment_reply'))
+        .then(editor => {
+            console.log(editor);
+        })
+        .catch(error => {
+            console.error(error);
+        });
 </script>
 @endpush

@@ -9,7 +9,7 @@
             <!--begin::Page title-->
             <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
                 <!--begin::Title-->
-                <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">update training</h1>
+                <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Sửa khóa học</h1>
                 <!--end::Title-->
                 <!--begin::Separator-->
                 <span class="h-20px border-gray-300 border-start mx-4"></span>
@@ -42,27 +42,32 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="mb-10 fv-row">
-                                        <label class="required form-label">Name</label>
+                                        <label class="required form-label">Tên</label>
                                         <input type="text" name="name" value="{{ $item->name }}" class="form-control" />
                                     </div>
 
                                     <div class="mb-10 fv-row">
-                                        <label class="required form-label">Alias</label>
+                                        <label class="required form-label">Bí danh</label>
                                         <input type="text" name="alias" value="{{ $item->alias }}" class="form-control" />
                                     </div>
 
                                     <div class="mb-10 fv-row">
-                                        <label class="form-label">Title</label>
+                                        <label class="form-label">Tiêu đề</label>
                                         <input type="text" name="title" value="{{ $item->title }}" class="form-control" />
                                     </div>
 
                                     <div class="mb-10 fv-row">
-                                        <label class="form-label">Intro</label>
-                                        <textarea type="text" name="intro" class="form-control" id="kt_docs_ckeditor_classic"> {{$item->intro}} </textarea>
+                                        <label class="form-label">Giới thiệu</label>
+                                        <textarea type="text" name="intro" class="form-control" id="kt_docs_ckeditor_classic" placeholder="Nhập vào nội dung giới thiệu"> {{$item->intro}} </textarea>
                                     </div>
 
                                     <div class="mb-10 fv-row">
-                                        <label class="required form-label">Category</label>
+                                        <label class="form-label">Nội dung</label>
+                                        <textarea type="text" name="content" class="form-control" id="kt_docs_ckeditor_classic_description" placeholder="Nhập vào nội dung khóa học">{{$item->content}} </textarea>
+                                    </div>
+
+                                    <div class="mb-10 fv-row">
+                                        <label class="required form-label">Danh mục</label>
                                         <select name="category_id" required class="form-select mb-2" data-placeholder="Select an option">
                                             @foreach($categories as $category)
                                             <option {{ $item->category_id == $category->id?'selected' : ''}} value="{{$category->id}}">{{$category->name}}</option>
@@ -71,30 +76,30 @@
                                     </div>
 
                                     <div class="mb-10 fv-row">
-                                        <label class="required form-label">Time</label>
+                                        <label class="required form-label">Thời gian</label>
                                         <input type="text" name="time" value="{{ $item->time }}" class="form-control" />
                                     </div>
 
                                     <div class="mb-10 fv-row">
-                                        <label class="form-label">Price</label>
+                                        <label class="form-label">Giá</label>
                                         <input type="text" name="price" value="{{ $item->price }}" class="form-control" />
                                     </div>
 
                                     <div class="mb-10 fv-row">
-                                        <label class="form-label">Lesson</label>
+                                        <label class="form-label">Buổi học</label>
                                         <input type="text" name="lesson" value="{{ $item->lesson }}" class="form-control" />
                                     </div>
 
                                     <div class="mb-10 fv-row">
-                                        <label class="form-label">link</label>
-                                        <input type="text" name="link" value="{{ $item->link }}" class="form-control" />
+                                        <label class="form-label">link rút gọn</label>
+                                        <input type="text" name="link" value="{{ $item->link }}" class="form-control" placeholder="Nhập vào tên link rút gọn"/>
                                     </div>
 
                                     <x-admin.single-img-upload inputName="file" fillValue="{{$item->file}}" />
                                     <div class="mb-10"></div>
 
                                     <div class="mb-10 fv-row">
-                                        <label class="col-lg-4 col-form-label fw-bold fs-6">Published</label>
+                                        <label class="col-lg-4 col-form-label fw-bold fs-6">Trạng thái</label>
                                         <select name="status" required class="form-select mb-2" data-placeholder="Select an option">
                                             @foreach(\App\Enums\TrainingStatus::getMap() as $v => $l)
                                             <option {{$item->status == $v ? 'selected' : ''}} value="{{$v}}">{{$l}}</option>
@@ -107,9 +112,9 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-end">
-                        <a href="{{route('admin.training.index')}}" id="kt_user_cancel" class="btn btn-light me-5">Back</a>
+                        <a href="{{route('admin.training.index')}}" id="kt_user_cancel" class="btn btn-light me-5">Quay lại</a>
                         <button type="submit" class="btn btn-primary">
-                            <span class="indicator-label">Save</span>
+                            <span class="indicator-label">Lưu</span>
                         </button>
                     </div>
                 </div>
@@ -147,7 +152,15 @@
     }
 
     ClassicEditor
-    .create(document.querySelector('#kt_docs_ckeditor_classic'))
+        .create(document.querySelector('#kt_docs_ckeditor_classic'))
+        .then(editor => {
+            console.log(editor);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    ClassicEditor
+    .create(document.querySelector('#kt_docs_ckeditor_classic_description'))
     .then(editor => {
         console.log(editor);
     })
