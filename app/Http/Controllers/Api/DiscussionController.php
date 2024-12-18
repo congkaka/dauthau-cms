@@ -67,6 +67,7 @@ class DiscussionController extends Controller
             $comment = new Discussion();
             $comment->name = $params['name'];
             $comment->phone = $params['phone'];
+            $comment->email = !empty($params['email']) ? $params['email'] : '';
             $comment->content = $params['content'];
             $comment->status = 0;
             $comment->save();

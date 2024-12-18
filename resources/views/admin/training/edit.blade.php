@@ -53,7 +53,7 @@
 
                                     <div class="mb-10 fv-row">
                                         <label class="form-label">Tiêu đề</label>
-                                        <input type="text" name="title" value="{{ $item->title }}" class="form-control" />
+                                        <textarea type="text" name="title" value="" class="form-control" id="kt_docs_ckeditor_classic_title" placeholder="Nhập vào tiêu đề">{{ $item->title }}</textarea>
                                     </div>
 
                                     <div class="mb-10 fv-row">
@@ -64,6 +64,26 @@
                                     <div class="mb-10 fv-row">
                                         <label class="form-label">Nội dung</label>
                                         <textarea type="text" name="content" class="form-control" id="kt_docs_ckeditor_classic_description" placeholder="Nhập vào nội dung khóa học">{{$item->content}} </textarea>
+                                    </div>
+
+                                    <div class="mb-10 fv-row">
+                                        <label class="form-label">Lợi ích học viên</label>
+                                        <textarea type="text" name="benefits" class="form-control" id="kt_docs_ckeditor_classic_benefits"> {{ $item->benefits }}</textarea>
+                                    </div>
+
+                                    <div class="mb-10 fv-row">
+                                        <label class="form-label">Ai nên tham dự</label>
+                                        <textarea type="text" name="participants" class="form-control" id="kt_docs_ckeditor_classic_participants"> {{ $item->participants }}</textarea>
+                                    </div>
+
+                                    <div class="mb-10 fv-row">
+                                        <label class="form-label">Chuyên gia</label>
+                                        <textarea type="text" name="experts" class="form-control" id="kt_docs_ckeditor_classic_experts"> {{ $item->experts }}</textarea>
+                                    </div>
+
+                                    <div class="mb-10 fv-row">
+                                        <label class="form-label">Dành cho doanh nghiệp</label>
+                                        <textarea type="text" name="businesses" class="form-control" id="kt_docs_ckeditor_classic_businesses"> {{ $item->businesses }}</textarea>
                                     </div>
 
                                     <div class="mb-10 fv-row">
@@ -152,6 +172,15 @@
     }
 
     ClassicEditor
+        .create(document.querySelector('#kt_docs_ckeditor_classic_title'))
+        .then(editor => {
+            console.log(editor);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+
+    ClassicEditor
         .create(document.querySelector('#kt_docs_ckeditor_classic'))
         .then(editor => {
             console.log(editor);
@@ -159,13 +188,50 @@
         .catch(error => {
             console.error(error);
         });
+        // kt_docs_ckeditor_classic_description
     ClassicEditor
-    .create(document.querySelector('#kt_docs_ckeditor_classic_description'))
-    .then(editor => {
-        console.log(editor);
-    })
-    .catch(error => {
-        console.error(error);
-    });
+        .create(document.querySelector('#kt_docs_ckeditor_classic_description'))
+        .then(editor => {
+            console.log(editor);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    
+        ClassicEditor
+        .create(document.querySelector('#kt_docs_ckeditor_classic_benefits'))
+        .then(editor => {
+            console.log(editor);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+
+        ClassicEditor
+        .create(document.querySelector('#kt_docs_ckeditor_classic_participants'))
+        .then(editor => {
+            console.log(editor);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+
+        ClassicEditor
+        .create(document.querySelector('#kt_docs_ckeditor_classic_experts'))
+        .then(editor => {
+            console.log(editor);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+
+        ClassicEditor
+        .create(document.querySelector('#kt_docs_ckeditor_classic_businesses'))
+        .then(editor => {
+            console.log(editor);
+        })
+        .catch(error => {
+            console.error(error);
+        });
 </script>
 @endpush

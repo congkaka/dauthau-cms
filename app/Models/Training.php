@@ -17,7 +17,8 @@ class Training extends Model
         'file',
         'author_id',
         'status',
-        'title', 'intro', 'price', 'description', 'lesson', 'content'
+        'title', 'intro', 'price', 'description', 'lesson', 'content',
+        'benefits', 'participants', 'experts', 'businesses'
     ];
 
     public function categories() {
