@@ -46,6 +46,8 @@ class DiscussionController extends Controller
                 'name' => 'required|string|max:255',
                 'phone' => 'required|string|max:15',
                 'content' => 'required|string',
+                'email' => 'string',
+                'title' => 'string',
             ];
 
             // Sử dụng Validator để kiểm tra dữ liệu đầu vào
