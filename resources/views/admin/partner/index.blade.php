@@ -54,21 +54,21 @@
                     <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_ecommerce_product_table">
                         <thead>
                             <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Description</th>
-                                <th>Image</th>
-                                <th>Position</th>
-                                <th>Action</th>
+                                <th>STT</th>
+                                <th>Tên</th>
+                                <th>Chi tiết</th>
+                                <th>Ảnh</th>
+                                <th>Vị trí</th>
+                                <th>Hành động</th>
                             </tr>
                         </thead>
                         <tbody class="fw-bold text-gray-600">
-                            @foreach($items as $i)
+                            @foreach($items as $k => $i)
                             <tr>
-                                <td> {{ $i->id }} </td>
+                                <td> {{ $k+1 }} </td>
                                 <td> {{ $i->name}} </td>
                                 <td> {{ $i->description}} </td>
-                                <td> {{ $i->image}} </td>
+                                <td> <img src="{{ $i->image}}" alt="avatar" width="30px" height="30px"> </td>
                                 <td> {{ $i->position}} </td>
                                 <td style="position: absolute">
                                     <a href="{{route('admin.partner.edit', $i->id)}}" class="menu-link"><i class="bi bi-pencil-square text-warning pe-3"></i></a>
