@@ -63,12 +63,12 @@
                         <thead>
                             <!--begin::Table row-->
                             <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                <th>ID</th>
-                                <th>name</th>
-                                <th>email</th>
-                                <th>username</th>
-                                <th>phone</th>
-                                <th>level</th>
+                                <th>STT</th>
+                                <th>Tên</th>
+                                <th>Thư điện tử</th>
+                                <!-- <th>username</th> -->
+                                <th>Điện thoại</th>
+                                <th>Vị trí</th>
                                 <th></th>
                             </tr>
                             <!--end::Table row-->
@@ -77,14 +77,14 @@
                         <!--begin::Table body-->
                         <tbody class="fw-bold text-gray-600">
                             <!--begin::Table row-->
-                            @foreach($items as $i)
+                            @foreach($items as $k => $i)
                             <tr>
                                 <td>
-                                    <a href="{{route('admin.user.show', $i->id)}}">{{$i->id}}</a>
+                                    <a href="{{route('admin.user.show', $i->id)}}">{{$k+1}}</a>
                                 </td>
                                 <td> {{ $i->name}} </td>
                                 <td> {{ $i->email}} </td>
-                                <td> {{ $i->username}} </td>
+                                <!-- <td> {{ $i->username}} </td> -->
                                 <td> {{ $i->phone}} </td>
                                 <td> {{ $i->is_admin ? 'ADMIN' : $i->level}} </td>
                                 <!--end::Category=-->

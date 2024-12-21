@@ -54,18 +54,18 @@
                     <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_ecommerce_product_table">
                         <thead>
                             <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                <th>ID</th>
-                                <th>Title</th>
-                                <th>Alias</th>
-                                <th>Status</th>
-                                <th>Created At</th>
-                                <th>Action</th>
+                                <th>STT</th>
+                                <th>Tiêu đề</th>
+                                <th>Tên rút gọn</th>
+                                <th>Trạng thái</th>
+                                <th>Ngày tạo</th>
+                                <th>Hành động</th>
                             </tr>
                         </thead>
                         <tbody class="fw-bold text-gray-600">
-                            @foreach($items as $i)
+                            @foreach($items as $k => $i)
                             <tr>
-                                <td> {{ $i->id }} </td>
+                                <td> {{ $k+1 }} </td>
                                 <td> {{ $i->title}} </td>
                                 <td> {{ $i->slug}} </td>
                                 <td> {{ $i->status}} </td>

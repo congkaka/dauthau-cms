@@ -74,10 +74,10 @@ $parentCates = \App\Models\Category::whereNull('parent_id')->get();
                         <thead>
                             <!--begin::Table row-->
                             <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Parent</th>
-                                <th>Action</th>
+                                <th>STT</th>
+                                <th>Tên</th>
+                                <th>Danh mục cha</th>
+                                <th>Hành động</th>
                             </tr>
                             <!--end::Table row-->
                         </thead>
@@ -85,10 +85,10 @@ $parentCates = \App\Models\Category::whereNull('parent_id')->get();
                         <!--begin::Table body-->
                         <tbody class="fw-bold text-gray-600">
                             <!--begin::Table row-->
-                            @foreach($items as $i)
+                            @foreach($items as $k => $i)
                             <tr>
                                 <td>
-                                    <a href="{{route('admin.categories.show', $i['id'])}}">{{$i['id']}}</a>
+                                    <a href="{{route('admin.categories.show', $i['id'])}}">{{$k+1}}</a>
                                 </td>
                                 <td>
                                     {{$i['name']}}
