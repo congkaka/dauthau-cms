@@ -55,6 +55,18 @@ class CommentController extends CrudController
         return view('admin.comments.index', $data);
     }
 
+    public function show($id)
+    {
+        $size = 15;
+        $comment = Comment::with(['blog'])->find($id);
+        $replys = Comment::with(['user'])->where('parent_id', $id)->paginate($size);
+        $data['items'] = $replys;
+        $data['comment'] = $comment;
+
+        return view('admin.comments.detail', $data);
+    }
+    
+
     /**
      * Validate form create
      * @param Request $request
