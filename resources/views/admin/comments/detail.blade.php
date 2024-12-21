@@ -11,17 +11,22 @@ $posts = \App\Models\Post::get(['id', 'title']);
             <!--begin::Page title-->
             <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
                 <!--begin::Title-->
-                <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Phản hồi</h1>
+                <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Trả lời bình luận</h1>
                 <!--end::Title-->
                 <!--begin::Separator-->
                 <span class="h-20px border-gray-300 border-start mx-4"></span>
                 <!--end::Separator-->
             </div>
-            <a href="#" class="btn btn-sm fw-bold btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app">Thêm mới</a>
             <!--end::Page title-->
         </div>
         <!--end::Container-->
     </div>
+    <div style="margin-left: 30px;">
+        <h3>{{$comment->content}}</h3>
+        <p>Bài viết: {{!empty($comment->blog) ? $comment->blog->title : ''}}</p>
+
+    </div>
+
     <!--end::Toolbar-->
     <!--begin::Post-->
     <div class="post d-flex flex-column-fluid" id="kt_post">
@@ -80,17 +85,13 @@ $posts = \App\Models\Post::get(['id', 'title']);
                             @foreach($items as $i)
                             <tr>
                                 <td>
-                                    {{$i['name']}}
+                                    {{!empty($i->user) ? $i->user->name : $i['name']}}
                                 </td>
                                 <td>
-                                    {{$i['content']}}
+                                    {!!$i['content'] !!}
                                 </td>
                                 <td>
-                                    @php
-                                    foreach($posts as $post) {
-                                    if($post->id == $i['post_id']) echo $post->title;
-                                    }
-                                    @endphp
+                                    {{$comment->content}}
                                 </td>
                                 <td>{{$i['created_at']}}</td>
                                 <td>
@@ -102,9 +103,7 @@ $posts = \App\Models\Post::get(['id', 'title']);
                                 </td>
                                 <td>
                                     <a href="{{route('admin.comments.edit', $i['id'])}}" class="menu-link"><i class="bi bi-pencil-square text-warning pe-3"></i></a>
-                                    <i class="bi bi-reply text-primary pe-3" data-id="{{$i['id']}}" data-bs-toggle="modal" data-bs-target="#kt_modal_reply"></i>
                                     <a href="{{route('admin.comments.destroy', $i['id'])}}" data-kt-customer-table-filter="delete_row" class="menu-link delete_btn"><i class="bi bi-trash text-danger pe-3"></i></a>
-                                    <button class="text-gray"><a href="{{route('admin.comments.show', $i->id)}}">{{ count($i['children']) }}</a></button>
                                 </td>
                             </tr>
                             @endforeach

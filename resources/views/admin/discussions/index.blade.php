@@ -93,7 +93,7 @@
                                     <a href="{{route('admin.discussions.edit', $i['id'])}}" class="menu-link"><i class="bi bi-pencil-square text-warning pe-3"></i></a>
                                     <i class="bi bi-reply text-primary pe-3" data-id="{{$i['id']}}" data-bs-toggle="modal" data-bs-target="#kt_modal_reply"></i>
                                     <a href="{{route('admin.discussions.destroy', $i['id'])}}" data-kt-customer-table-filter="delete_row" class="menu-link delete_btn"><i class="bi bi-trash text-danger pe-3"></i></a>
-                                    <button class="text-gray">{{ count($i['children']) }}</button>
+                                    <a href="{{route('admin.discussions.show', $i->id)}}"><button class="text-gray">{{ count($i['children']) }}</button></a>
                                 </td>
                             </tr>
                             @endforeach

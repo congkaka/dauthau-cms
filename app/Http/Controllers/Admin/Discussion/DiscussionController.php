@@ -55,6 +55,15 @@ class DiscussionController extends CrudController
         return view('admin.discussions.index', $data);
     }
 
+    public function show($id)
+    {
+        $comment = Discussion::find($id);
+        $items = Discussion::with(['user'])->where('parent_id', $id)->paginate(15);
+        $data['items'] = $items;
+        $data['comment'] = $comment;
+        return view('admin.discussions.detail', $data);
+    }
+
     /**
      * Validate form create
      * @param Request $request
