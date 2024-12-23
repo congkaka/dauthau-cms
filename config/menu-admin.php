@@ -8,6 +8,13 @@ return [
         'activeIs' => 'admin.dashboard',
     ],
     [
+        'text' => 'Thi thử',
+        'icon' => 'bi bi-award-fill',
+        'route' => 'admin.practice.index',
+        'activeIs' => 'admin.practice.*',
+    ],
+
+    [
         'text' => 'Quản lý nhân viên',
         'icon' => 'bi bi-people',
         'route' => 'admin.user.index',
