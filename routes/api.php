@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\ContactInformationController;
 use App\Http\Controllers\Api\DiscussionController;
 use App\Http\Controllers\Api\ExpertController;
 use App\Http\Controllers\Api\PartnerController;
+use App\Http\Controllers\Api\PracticeController;
 use App\Http\Controllers\Api\RegulationController;
 use App\Http\Controllers\Api\SlideController;
 use App\Http\Controllers\Api\TrainingController;
@@ -70,4 +71,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/discussion/{id}', [DiscussionController::class, 'getDiscussionDetails']);
 
     Route::post('/comment/add', [CommentController::class, 'addComment']);
+
+    Route::get('/practices', [PracticeController::class, 'getAll']);
+
 });

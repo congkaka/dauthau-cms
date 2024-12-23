@@ -132,6 +132,11 @@
                                 </div>
 
                                 <div class="mb-10 fv-row">
+                                    <label class="form-label">Title</label>
+                                    <input type="text" name="title" value="" class="form-control" placeholder="Enter Title" />
+                                </div>
+
+                                <div class="mb-10 fv-row">
                                     <label class="form-label">Email</label>
                                     <input type="email" name="email" value="" class="form-control" placeholder="Enter email" />
                                 </div>

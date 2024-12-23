@@ -73,6 +73,11 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
         Route::resource('partner', \App\Http\Controllers\Admin\Partner\PartnerController::class, array("as"=>"admin"));
     });
 
+    // Router practice
+    Route::group([], function () {
+        Route::resource('practice', \App\Http\Controllers\Admin\Practice\PracticeController::class, array("as"=>"admin"));
+    });
+
     // Router Stores
     Route::group([], function () {
         Route::resource('stores', \App\Http\Controllers\Admin\Store\StoreController::class, array("as"=>"admin"));
