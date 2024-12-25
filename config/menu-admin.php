@@ -70,25 +70,32 @@ return [
         'activeIs' => 'admin.training.*',
     ],
 
-    // [
-    //     'text' => 'Dịch vụ Tư vấn',
-    //     'icon' => 'bi bi-book',
-    //     'route' => 'admin.partner.index',
-    //     'activeIs' => 'admin.partner.*',
-    // ],
+    [
+        'text' => 'Đăng ký đào tạo',
+        'icon' => 'bi bi-pencil-fill',
+        'route' => 'admin.booking.index',
+        'activeIs' => 'admin.booking.*',
+    ],
+
+    [
+        'text' => 'Dịch vụ Tư vấn',
+        'icon' => 'bi bi-telephone-forward',
+        'route' => 'admin.consulting.index',
+        'activeIs' => 'admin.consulting.*',
+    ],
+
+    [
+        'text' => 'Đăng ký Tư vấn',
+        'icon' => 'bi bi-pencil-square',
+        'route' => 'admin.booking-consulting.index',
+        'activeIs' => 'admin.booking-consulting.*',
+    ],
 
     [
         'text' => 'Văn bản pháp quy',
         'icon' => 'bi bi-book',
         'route' => 'admin.regulation.index',
         'activeIs' => 'admin.regulation.*',
-    ],
-
-    [
-        'text' => 'Quản lý đăng ký',
-        'icon' => 'bi bi-pencil-fill',
-        'route' => 'admin.booking.index',
-        'activeIs' => 'admin.booking.*',
     ],
 
     [
