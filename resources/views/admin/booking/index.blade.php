@@ -57,17 +57,17 @@ $courses = \App\Models\Training::get();
                     <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_ecommerce_product_table">
                         <thead>
                             <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                <th>Họ tên</th>
-                                <th>Giới tính</th>
-                                <th>Điện thoại</th>
-                                <th>email</th>
-                                <th>Khóa học</th>
-                                <th>nguồn</th>
-                                <th>Chức vụ</th>
-                                <th>Công ty</th>
-                                <th>Kinh nghiệm</th>
-                                <th>ghi chú</th>
-                                <th>ngày tạo</th>
+                                <th class="min-w-140px">Họ tên</th>
+                                <th class="min-w-90px">Giới tính</th>
+                                <th class="min-w-90px">Điện thoại</th>
+                                <th>Email</th>
+                                <th class="min-w-90px">Khóa học</th>
+                                <th>Nguồn</th>
+                                <th class="min-w-90px">Chức vụ</th>
+                                <th class="min-w-90px">Công ty</th>
+                                <th class="min-w-100px">Kinh nghiệm</th>
+                                <th class="min-w-90px">Ghi chú</th>
+                                <th class="min-w-90px">Ngày tạo</th>
                                 <th>#</th>
                             </tr>
                         </thead>

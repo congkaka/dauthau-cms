@@ -68,11 +68,11 @@ $parentCates = \App\Models\Category::where('parent_id', 22)->get();
                         <thead>
                             <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                 <th>STT</th>
-                                <th>Tên</th>
+                                <th class="min-w-150px">Tên</th>
                                 <th>Giới thiệu</th>
                                 <th>Ảnh</th>
-                                <th>Vị trí</th>
-                                <th>Hành động</th>
+                                <th class="min-w-70px">Vị trí</th>
+                                <th class="min-w-100px text-end">Hành động</th>
                             </tr>
                         </thead>
                         <tbody class="fw-bold text-gray-600">
@@ -83,7 +83,7 @@ $parentCates = \App\Models\Category::where('parent_id', 22)->get();
                                 <td> {{ $i->description}} </td>
                                 <td> <img src="{{ $i->image}} " alt="avatar" width="30px" height="30px"> </td>
                                 <td> {{ $i->position}} </td>
-                                <td style="position: absolute">
+                                <td class="text-end">
                                     <a href="{{route('admin.expert.edit', $i->id)}}" class="menu-link"><i class="bi bi-pencil-square text-warning pe-3"></i></a>
                                     <a href="{{route('admin.expert.destroy', $i->id)}}" class="menu-link delete_btn"><i class="bi bi-trash text-danger pe-3"></i></a>
                                 </td>

@@ -57,12 +57,12 @@
                                 <th>ID</th>
                                 <th>Số</th>
                                 <th>Tên VB</th>
-                                <th>Cơ quan BH</th>
+                                <th class="min-w-100px">Cơ quan BH</th>
                                 <th>Người ký</th>
                                 <th>Ngày BH</th>
                                 <th>Ngày HL</th>
                                 <th>File</th>
-                                <th>#</th>
+                                <th class="min-w-100px text-end">Hành Động</th>
                             </tr>
                         </thead>
                         <tbody class="fw-bold text-gray-600">
@@ -76,7 +76,7 @@
                                 <td> {{ $i->issuedDate}} </td>
                                 <td> {{ $i->effectiveDate}} </td>
                                 <td> @if($i->download_path != 'not_found')<a href="{{ $i->download_path}}" download>{{ $i->download_path}}</a> @endif</td>
-                                <td style="position: absolute">
+                                <td class="text-end">
                                     <a href="{{route('admin.regulation.edit', $i->id)}}" class="menu-link"><i class="bi bi-pencil-square text-warning pe-3"></i></a>
                                     <a href="{{route('admin.regulation.destroy', $i->id)}}" class="menu-link delete_btn"><i class="bi bi-trash text-danger pe-3"></i></a>
                                 </td>
