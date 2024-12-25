@@ -11,9 +11,9 @@ enum Regulation: string
     public static function getMap(): array
     {
         return [
-            1 => 'Published',
-            0 => 'Draft',
-            2 => 'Pending'
+            1 => 'Đã phê duyệt',
+            0 => 'Nháp',
+            2 => 'Đang chờ'
         ];
     }
 
