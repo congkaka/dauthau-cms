@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @php
-$posts = \App\Models\Post::get(['id', 'title']);
+$posts = \App\Models\Post::get(['id', 'title', 'slug']);
 @endphp
 @section('content')
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
@@ -88,9 +88,17 @@ $posts = \App\Models\Post::get(['id', 'title']);
                                 <td>
                                     @php
                                     foreach($posts as $post) {
-                                    if($post->id == $i['post_id']) echo $post->title;
+                                        $slug = $post->slug;
+                                        $tag = "
+                                            $post->title
+                                            </br>
+                                            <a href='https://dauthau.online/$slug'>Xem bài viết</a>
+                                        ";
+                                        if($post->id == $i['post_id']) echo $tag;
                                     }
                                     @endphp
+                                    </br>
+                                    <button class="text-gray"><a href="{{route('admin.comments.show', $i->id)}}">{{ count($i['children']) }}</a></button>
                                 </td>
                                 <td>{{$i['created_at']}}</td>
                                 <td>
@@ -104,7 +112,6 @@ $posts = \App\Models\Post::get(['id', 'title']);
                                     <a href="{{route('admin.comments.edit', $i['id'])}}" class="menu-link"><i class="bi bi-pencil-square text-warning pe-3"></i></a>
                                     <i class="bi bi-reply text-primary pe-3" data-id="{{$i['id']}}" data-bs-toggle="modal" data-bs-target="#kt_modal_reply"></i>
                                     <a href="{{route('admin.comments.destroy', $i['id'])}}" data-kt-customer-table-filter="delete_row" class="menu-link delete_btn"><i class="bi bi-trash text-danger pe-3"></i></a>
-                                    <button class="text-gray"><a href="{{route('admin.comments.show', $i->id)}}">{{ count($i['children']) }}</a></button>
                                 </td>
                             </tr>
                             @endforeach
