@@ -36,7 +36,7 @@ return [
     ],
 
     [
-        'text' => 'Thảo luận cùng chuyên gia',
+        'text' => 'Thảo luận',
         'icon' => 'bi bi-send-plus',
         'route' => 'admin.discussions.index',
         'activeIs' => 'admin.discussions.*',

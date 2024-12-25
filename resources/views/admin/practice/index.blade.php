@@ -59,7 +59,7 @@
                                 <th>Mô tả</th>
                                 <th>Link</th>
                                 <th>Ảnh</th>
-                                <th>Hành động</th>
+                                <th class="min-w-100px text-end">Hành động</th>
                             </tr>
                         </thead>
                         <tbody class="fw-bold text-gray-600">
@@ -70,7 +70,7 @@
                                 <td> {{ $i->description}} </td>
                                 <td> <a href="{{ $i->link}}">Link google</a> </td>
                                 <td> <img src="{{ $i->image}}" alt="avatar" width="30px" height="30px"> </td>
-                                <td style="position: absolute">
+                                <td class="text-end">
                                     <a href="{{route('admin.practice.edit', $i->id)}}" class="menu-link"><i class="bi bi-pencil-square text-warning pe-3"></i></a>
                                     <a href="{{route('admin.practice.destroy', $i->id)}}" class="menu-link delete_btn"><i class="bi bi-trash text-danger pe-3"></i></a>
                                 </td>

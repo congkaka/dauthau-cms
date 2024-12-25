@@ -61,11 +61,11 @@
                         <thead>
                             <!--begin::Table row-->
                             <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                <th>Tác giả</th>
+                                <th class="min-w-150px">Tác giả</th>
                                 <th>Bình luận</th>
-                                <th>Đã đăng vào</th>
-                                <th>Trạng thái</th>
-                                <th>Hành động</th>
+                                <th class="min-w-100px">Đã đăng vào</th>
+                                <th class="min-w-100px">Trạng thái</th>
+                                <th class="min-w-150px text-end">Hành động</th>
                             </tr>
                             <!--end::Table row-->
                         </thead>
@@ -89,7 +89,7 @@
                                     }
                                     @endphp
                                 </td>
-                                <td>
+                                <td class="text-end">
                                     <a href="{{route('admin.discussions.edit', $i['id'])}}" class="menu-link"><i class="bi bi-pencil-square text-warning pe-3"></i></a>
                                     <i class="bi bi-reply text-primary pe-3" data-id="{{$i['id']}}" data-bs-toggle="modal" data-bs-target="#kt_modal_reply"></i>
                                     <a href="{{route('admin.discussions.destroy', $i['id'])}}" data-kt-customer-table-filter="delete_row" class="menu-link delete_btn"><i class="bi bi-trash text-danger pe-3"></i></a>

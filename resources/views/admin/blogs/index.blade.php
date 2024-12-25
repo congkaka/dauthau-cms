@@ -57,9 +57,9 @@
                                 <th>STT</th>
                                 <th>Tiêu đề</th>
                                 <th>Tên rút gọn</th>
-                                <th>Trạng thái</th>
+                                <th class="min-w-100px">Trạng thái</th>
                                 <th>Ngày tạo</th>
-                                <th>Hành động</th>
+                                <th class="min-w-100px text-end">Hành động</th>
                             </tr>
                         </thead>
                         <tbody class="fw-bold text-gray-600">
@@ -70,7 +70,7 @@
                                 <td> {{ $i->slug}} </td>
                                 <td> {{ $i->status}} </td>
                                 <td> {{ $i->created_at}} </td>
-                                <td style="position: absolute">
+                                <td class="text-end">
                                     <a href="{{route('admin.blogs.edit', $i->id)}}" class="menu-link"><i class="bi bi-pencil-square text-warning pe-3"></i></a>
                                     <a href="{{route('admin.blogs.destroy', $i->id)}}" class="menu-link delete_btn"><i class="bi bi-trash text-danger pe-3"></i></a>
                                 </td>
