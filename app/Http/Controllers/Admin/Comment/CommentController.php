@@ -118,4 +118,16 @@ class CommentController extends CrudController
         
 
     }
+
+    public function changeStatus(Request $request) {
+        try {
+            $comment = Comment::find($request->commentId);
+            $comment->status = (int) $request->status;
+            $comment->save();
+
+            return response()->json(['success' => 'Cập nhật trạng thái thành công']);
+        } catch (\Throwable $th) {
+            dd($th);
+        }
+    }
 }

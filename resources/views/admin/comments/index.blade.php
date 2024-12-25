@@ -69,7 +69,7 @@ $posts = \App\Models\Post::get(['id', 'title', 'slug']);
                                 <th class="min-w-150px">Trả lời cho</th>
                                 <th>Đã đăng vào</th>
                                 <th class="min-w-95px">Trạng thái</th>
-                                <th class="min-w-125px text-end">Hành động</th>
+                                <th class="min-w-150px text-end">Hành động</th>
                             </tr>
                             <!--end::Table row-->
                         </thead>
@@ -104,14 +104,19 @@ $posts = \App\Models\Post::get(['id', 'title', 'slug']);
                                 <td>
                                     @php
                                     foreach(\App\Enums\Regulation::getMap() as $v => $l){
-                                    if($i['status'] == $v) echo $l;
+                                    if($i['status'] == $v) echo "<span id='status-$i->id'>$l</span>";
                                     }
                                     @endphp
                                 </td>
-                                <td class="text-end">
-                                    <a href="{{route('admin.comments.edit', $i['id'])}}" class="menu-link"><i class="bi bi-pencil-square text-warning pe-3"></i></a>
-                                    <i class="bi bi-reply text-primary pe-3" data-id="{{$i['id']}}" data-bs-toggle="modal" data-bs-target="#kt_modal_reply"></i>
-                                    <a href="{{route('admin.comments.destroy', $i['id'])}}" data-kt-customer-table-filter="delete_row" class="menu-link delete_btn"><i class="bi bi-trash text-danger pe-3"></i></a>
+                                <td class="text-end" style="position: relative;">
+                                    <div class="action" style="display: flex; position: absolute; right: -35px;">
+                                        <a href="{{route('admin.comments.edit', $i['id'])}}" class="menu-link"><i class="bi bi-pencil-square text-warning pe-3"></i></a>
+                                        <i class="bi bi-reply text-primary pe-3" data-id="{{$i['id']}}" data-bs-toggle="modal" data-bs-target="#kt_modal_reply"></i>
+                                        <a href="{{route('admin.comments.destroy', $i['id'])}}" data-kt-customer-table-filter="delete_row" class="menu-link delete_btn"><i class="bi bi-trash text-danger pe-3"></i></a>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input h-20px w-30px changeStatus" data-id="{{$i['id']}}" type="checkbox" role="switch" @if($i['status'] == 1)checked @endif>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach
@@ -237,7 +242,33 @@ $posts = \App\Models\Post::get(['id', 'title', 'slug']);
 <script>
     $('.bi-reply').on('click', function() {
         $('#comment_id').val($(this).data('id'));
-    })
+    });
+
+    $('.changeStatus').on('change', function() {
+        let commentId = $(this).data('id');
+        let status = $(this).is(':checked')? 1 : 2;
+
+        $.ajax({
+            url: "{{route('admin.comments.changeStatus')}}",
+            method: 'POST',
+            data: {
+                commentId: commentId,
+                status: status,
+                _token: "{{csrf_token()}}"
+            },
+            success: function(response) {
+                if (response.success) {
+                    status == 1 ? $('#status-'+commentId).text('Đã phê duyệt') : $('#status-'+commentId).text('Đang chờ');
+
+                } else {
+                    alert('Thay đổi trạng thái thất bại!');
+                }
+            },
+            error: function(xhr, status, error) {
+                console.log(xhr.responseText);
+            }
+        });
+    });
 
     ClassicEditor
         .create(document.querySelector('#comment_reply'))
