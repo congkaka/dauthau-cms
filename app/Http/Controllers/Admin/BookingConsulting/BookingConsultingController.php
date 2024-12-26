@@ -33,13 +33,13 @@ class BookingConsultingController extends CrudController
     /**
      * Show the form for creating a new resource.
      */
-    public function create($data = [])
-    {
-        $data['categories'] = (new \App\Repositories\CategoryRepository())->getAll();
-        $data['stores'] = (new \App\Repositories\StoreRepository())->getAll();
+    // public function create($data = [])
+    // {
+    //     $data['categories'] = (new \App\Repositories\CategoryRepository())->getAll();
+    //     $data['stores'] = (new \App\Repositories\StoreRepository())->getAll();
 
-        return parent::create($data);
-    }
+    //     return parent::create($data);
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -60,13 +60,13 @@ class BookingConsultingController extends CrudController
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(int $id, $data = [])
-    {
-        $data['categories'] = (new \App\Repositories\CategoryRepository())->getAll();
-        $data['stores'] = (new \App\Repositories\StoreRepository())->getAll();
+    // public function edit(int $id, $data = [])
+    // {
+    //     $data['categories'] = (new \App\Repositories\CategoryRepository())->getAll();
+    //     $data['stores'] = (new \App\Repositories\StoreRepository())->getAll();
 
-        return parent::edit($id, $data);
-    }
+    //     return parent::edit($id, $data);
+    // }
 
     /**
      * Update the specified resource in storage.
