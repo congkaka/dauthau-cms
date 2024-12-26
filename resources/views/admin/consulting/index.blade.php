@@ -56,9 +56,7 @@
                             <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                 <th>STT</th>
                                 <th>Tên Dịch vụ</th>
-                                <th>Thời gian</th>
-                                <th>Brochure</th>
-                                <th>Trạng thái</th>
+                                <th>Ngày tạo</th>
                                 <th>Hành động</th>
                             </tr>
                         </thead>
@@ -66,10 +64,8 @@
                             @foreach($items as $k => $i)
                             <tr>
                                 <td> {{ $k+1 }} </td>
-                                <td> {{ $i->name}} </td>
-                                <td> {{ $i->time}} </td>
-                                <td> <a href="{{$i->file}}">{{ $i->link?$i->link:'Download file'}}</a> </td>
-                                <td> {{ $i->status}} </td>
+                                <td> {{ $i->title}} </td>
+                                <td> {{ $i->created_at}} </td>
                                 <td style="position: absolute">
                                     <a href="{{route('admin.consulting.edit', $i->id)}}" class="menu-link"><i class="bi bi-pencil-square text-warning pe-3"></i></a>
                                     <a href="{{route('admin.consulting.destroy', $i->id)}}" class="menu-link delete_btn"><i class="bi bi-trash text-danger pe-3"></i></a>

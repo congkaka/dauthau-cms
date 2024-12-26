@@ -43,7 +43,7 @@
                                 <div class="col-md-12">
                                     <div class="mb-10 fv-row">
                                         <label class="required form-label">Tên</label>
-                                        <input type="text" name="name" value="{{ $item->name }}" class="form-control" />
+                                        <input type="text" name="title" value="{{ $item->title }}" class="form-control" />
                                     </div>
 
                                     <div class="mb-10 fv-row">
@@ -52,80 +52,12 @@
                                     </div>
 
                                     <div class="mb-10 fv-row">
-                                        <label class="form-label">Tiêu đề</label>
-                                        <textarea type="text" name="title" value="" class="form-control" id="kt_docs_ckeditor_classic_title" placeholder="Nhập vào tiêu đề">{{ $item->title }}</textarea>
-                                    </div>
-
-                                    <div class="mb-10 fv-row">
-                                        <label class="form-label">Giới thiệu</label>
-                                        <textarea type="text" name="intro" class="form-control" id="kt_docs_ckeditor_classic" placeholder="Nhập vào nội dung giới thiệu"> {{$item->intro}} </textarea>
-                                    </div>
-
-                                    <div class="mb-10 fv-row">
                                         <label class="form-label">Nội dung</label>
-                                        <textarea type="text" name="content" class="form-control" id="kt_docs_ckeditor_classic_description" placeholder="Nhập vào nội dung khóa học">{{$item->content}} </textarea>
+                                        <textarea type="text" name="description" class="form-control" id="kt_docs_ckeditor_classic_description" placeholder="Nhập vào dịch vụ">{{$item->description}} </textarea>
                                     </div>
 
-                                    <div class="mb-10 fv-row">
-                                        <label class="form-label">Lợi ích học viên</label>
-                                        <textarea type="text" name="benefits" class="form-control" id="kt_docs_ckeditor_classic_benefits"> {{ $item->benefits }}</textarea>
-                                    </div>
-
-                                    <div class="mb-10 fv-row">
-                                        <label class="form-label">Ai nên tham dự</label>
-                                        <textarea type="text" name="participants" class="form-control" id="kt_docs_ckeditor_classic_participants"> {{ $item->participants }}</textarea>
-                                    </div>
-
-                                    <div class="mb-10 fv-row">
-                                        <label class="form-label">Chuyên gia</label>
-                                        <textarea type="text" name="experts" class="form-control" id="kt_docs_ckeditor_classic_experts"> {{ $item->experts }}</textarea>
-                                    </div>
-
-                                    <div class="mb-10 fv-row">
-                                        <label class="form-label">Dành cho doanh nghiệp</label>
-                                        <textarea type="text" name="businesses" class="form-control" id="kt_docs_ckeditor_classic_businesses"> {{ $item->businesses }}</textarea>
-                                    </div>
-
-                                    <div class="mb-10 fv-row">
-                                        <label class="required form-label">Danh mục</label>
-                                        <select name="category_id" required class="form-select mb-2" data-placeholder="Select an option">
-                                            @foreach($categories as $category)
-                                            <option {{ $item->category_id == $category->id?'selected' : ''}} value="{{$category->id}}">{{$category->name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-
-                                    <div class="mb-10 fv-row">
-                                        <label class="required form-label">Thời gian</label>
-                                        <input type="text" name="time" value="{{ $item->time }}" class="form-control" />
-                                    </div>
-
-                                    <div class="mb-10 fv-row">
-                                        <label class="form-label">Giá</label>
-                                        <input type="text" name="price" value="{{ $item->price }}" class="form-control" />
-                                    </div>
-
-                                    <div class="mb-10 fv-row">
-                                        <label class="form-label">Buổi học</label>
-                                        <input type="text" name="lesson" value="{{ $item->lesson }}" class="form-control" />
-                                    </div>
-
-                                    <div class="mb-10 fv-row">
-                                        <label class="form-label">link rút gọn</label>
-                                        <input type="text" name="link" value="{{ $item->link }}" class="form-control" placeholder="Nhập vào tên link rút gọn"/>
-                                    </div>
-
-                                    <x-admin.single-img-upload inputName="file" fillValue="{{$item->file}}" />
+                                    <x-admin.single-img-upload inputName="image" fillValue="{{$item->image}}" />
                                     <div class="mb-10"></div>
-
-                                    <div class="mb-10 fv-row">
-                                        <label class="col-lg-4 col-form-label fw-bold fs-6">Trạng thái</label>
-                                        <select name="status" required class="form-select mb-2" data-placeholder="Select an option">
-                                            @foreach(\App\Enums\consultingStatus::getMap() as $v => $l)
-                                            <option {{$item->status == $v ? 'selected' : ''}} value="{{$v}}">{{$l}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
 
                                 </div>
                             </div>
@@ -146,7 +78,7 @@
 @push('custom-scripts')
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const nameField = document.querySelector('input[name="name"]');
+        const nameField = document.querySelector('input[name="title"]');
         const aliasField = document.querySelector('input[name="alias"]');
 
         if (nameField && aliasField) {

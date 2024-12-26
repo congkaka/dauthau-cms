@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\Api\BlogController;
+use App\Http\Controllers\Api\BookingConsultingController;
 use App\Http\Controllers\Api\BookingController;
 use App\Http\Controllers\Api\CommentController;
+use App\Http\Controllers\Api\ConsultingController;
 use App\Http\Controllers\Api\ContactInformationController;
 use App\Http\Controllers\Api\DiscussionController;
 use App\Http\Controllers\Api\ExpertController;
@@ -73,5 +75,10 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/comment/add', [CommentController::class, 'addComment']);
 
     Route::get('/practices', [PracticeController::class, 'getAll']);
+
+    Route::get('/consultings', [ConsultingController::class, 'getAll']);
+    Route::get('/consulting/{alias}', [ConsultingController::class, 'getConsultingDetails']);
+
+    Route::post('/booking-consulting', [BookingConsultingController::class, 'create']);
 
 });
