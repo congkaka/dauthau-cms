@@ -43,7 +43,7 @@
                                 <div class="col-md-12">
                                     <div class="mb-10 fv-row">
                                         <label class="required form-label">Tên</label>
-                                        <input type="text" name="name" value="" class="form-control" />
+                                        <input type="text" name="title" value="" class="form-control" />
                                     </div>
 
                                     <div class="mb-10 fv-row">
@@ -52,80 +52,12 @@
                                     </div>
 
                                     <div class="mb-10 fv-row">
-                                        <label class="form-label">Tiêu đề</label>
-                                        <textarea type="text" name="title" value="" class="form-control" id="kt_docs_ckeditor_classic_title" placeholder="Nhập vào tiêu đề"> </textarea>
+                                        <label class="form-label">Chi tiết</label>
+                                        <textarea type="text" name="description" class="form-control" id="kt_docs_ckeditor_classic_description" placeholder="Nhập chi tiết dịch vụ"> </textarea>
                                     </div>
 
-                                    <div class="mb-10 fv-row">
-                                        <label class="form-label">Giới thiệu</label>
-                                        <textarea type="text" name="intro" class="form-control" id="kt_docs_ckeditor_classic" placeholder="Nhập vào nội dung giới thiệu"> </textarea>
-                                    </div>
-
-                                    <div class="mb-10 fv-row">
-                                        <label class="form-label">Nội dung</label>
-                                        <textarea type="text" name="content" class="form-control" id="kt_docs_ckeditor_classic_description" placeholder="Nhập vào nội dung khóa học"> </textarea>
-                                    </div>
-
-                                    <div class="mb-10 fv-row">
-                                        <label class="form-label">Lợi ích học viên</label>
-                                        <textarea type="text" name="benefits" class="form-control" id="kt_docs_ckeditor_classic_benefits"> </textarea>
-                                    </div>
-
-                                    <div class="mb-10 fv-row">
-                                        <label class="form-label">Ai nên tham dự</label>
-                                        <textarea type="text" name="participants" class="form-control" id="kt_docs_ckeditor_classic_participants"> </textarea>
-                                    </div>
-
-                                    <div class="mb-10 fv-row">
-                                        <label class="form-label">Chuyên gia</label>
-                                        <textarea type="text" name="experts" class="form-control" id="kt_docs_ckeditor_classic_experts"> </textarea>
-                                    </div>
-
-                                    <div class="mb-10 fv-row">
-                                        <label class="form-label">Dành cho doanh nghiệp</label>
-                                        <textarea type="text" name="businesses" class="form-control" id="kt_docs_ckeditor_classic_businesses"> </textarea>
-                                    </div>
-
-                                    <div class="mb-10 fv-row">
-                                        <label class="required form-label">Danh mục</label>
-                                        <select name="category_id" required class="form-select mb-2" data-placeholder="Select an option">
-                                            @foreach($categories as $category)
-                                            <option value="{{$category->id}}">{{$category->name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-
-                                    <div class="mb-10 fv-row">
-                                        <label class="form-label">Thời gian</label>
-                                        <input type="text" name="time" value="" class="form-control" />
-                                    </div>
-
-                                    <div class="mb-10 fv-row">
-                                        <label class="form-label">Giá</label>
-                                        <input type="text" name="price" value="" class="form-control" />
-                                    </div>
-
-                                    <div class="mb-10 fv-row">
-                                        <label class="form-label">Buổi học</label>
-                                        <input type="text" name="lesson" value="" class="form-control" />
-                                    </div>
-
-                                    <div class="mb-10 fv-row">
-                                        <label class="form-label">Link rút gọn</label>
-                                        <input type="text" name="link" value="" class="form-control" placeholder="Nhập tên link rút gọn" />
-                                    </div>
-
-                                    <x-admin.single-img-upload inputName="file" fillValue="" />
+                                    <x-admin.single-img-upload inputName="image" fillValue="" />
                                     <div class="mb-10"></div>
-
-                                    <div class="mb-10 fv-row">
-                                        <label class="col-lg-4 col-form-label fw-bold fs-6">Trạng thái</label>
-                                        <select name="status" required class="form-select mb-2" data-placeholder="Select an option">
-                                            @foreach(\App\Enums\consultingStatus::getMap() as $v => $l)
-                                            <option value="{{$v}}">{{$l}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
 
                                 </div>
                             </div>
@@ -146,7 +78,7 @@
 @push('custom-scripts')
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const nameField = document.querySelector('input[name="name"]');
+        const nameField = document.querySelector('input[name="title"]');
         const aliasField = document.querySelector('input[name="alias"]');
 
         if (nameField && aliasField) {
@@ -171,62 +103,9 @@
             .replace(/[^\w\s]/gi, ''); // Loại bỏ ký tự đặc biệt (giữ lại chữ cái, số và khoảng trắng)
     }
 
-    ClassicEditor
-        .create(document.querySelector('#kt_docs_ckeditor_classic_title'))
-        .then(editor => {
-            console.log(editor);
-        })
-        .catch(error => {
-            console.error(error);
-        });
-
-    ClassicEditor
-        .create(document.querySelector('#kt_docs_ckeditor_classic'))
-        .then(editor => {
-            console.log(editor);
-        })
-        .catch(error => {
-            console.error(error);
-        });
-        // kt_docs_ckeditor_classic_description
+    // kt_docs_ckeditor_classic_description
     ClassicEditor
         .create(document.querySelector('#kt_docs_ckeditor_classic_description'))
-        .then(editor => {
-            console.log(editor);
-        })
-        .catch(error => {
-            console.error(error);
-        });
-    
-        ClassicEditor
-        .create(document.querySelector('#kt_docs_ckeditor_classic_benefits'))
-        .then(editor => {
-            console.log(editor);
-        })
-        .catch(error => {
-            console.error(error);
-        });
-
-        ClassicEditor
-        .create(document.querySelector('#kt_docs_ckeditor_classic_participants'))
-        .then(editor => {
-            console.log(editor);
-        })
-        .catch(error => {
-            console.error(error);
-        });
-
-        ClassicEditor
-        .create(document.querySelector('#kt_docs_ckeditor_classic_experts'))
-        .then(editor => {
-            console.log(editor);
-        })
-        .catch(error => {
-            console.error(error);
-        });
-
-        ClassicEditor
-        .create(document.querySelector('#kt_docs_ckeditor_classic_businesses'))
         .then(editor => {
             console.log(editor);
         })
