@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 @section('content')
 @php
-$courses = \App\Models\Training::get();
+$consultings = \App\Models\Consulting::get();
 @endphp
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <!--begin::Toolbar-->
@@ -61,6 +61,7 @@ $courses = \App\Models\Training::get();
                                 <!-- <th >Giới tính</th> -->
                                 <th class="min-w-90px">Điện thoại</th>
                                 <th>Email</th>
+                                <th>Dịch vụ</th>
                                 <th class="min-w-90px">Ngày tạo</th>
                                 <th>#</th>
                             </tr>
@@ -72,7 +73,11 @@ $courses = \App\Models\Training::get();
                                 {{--<td> {{ ($i->gender == 1) ? 'Nam' : 'Nữ'}} </td>--}}
                                 <td> {{ $i->phone}} </td>
                                 <td> {{ $i->email}} </td>
-                                <!-- <td> {{ $i->note}} </td> -->
+                                <td> @php
+                                    foreach ($consultings as $consulting) {
+                                        if($consulting->id == $i->consulting_id) echo $consulting->title;
+                                    }
+                                    @endphp </td>
                                 <td> {{ $i->created_at}} </td>
                                 <td style="position: absolute">
                                     <!-- <a href="{{route('admin.booking-consulting.edit', $i->id)}}" class="menu-link"><i class="bi bi-pencil-square text-warning pe-3"></i></a> -->
