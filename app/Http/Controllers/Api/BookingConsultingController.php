@@ -40,12 +40,10 @@ class BookingConsultingController extends Controller
             $params = $validator->validated();
 
             // Lưu dữ liệu vào bảng BookingConsulting
-            BookingConsulting::updateOrCreate(
+            BookingConsulting::create(
                 [
                     'phone' => $request->phone,
-                    'email' => $request->email ?? null
-                ],
-                [
+                    'email' => $request->email ?? null,
                     'fullname' => $request->fullname,
                     'gender' => $request->gender ?? null,
                     'consulting_id' => $request->consulting_id,
