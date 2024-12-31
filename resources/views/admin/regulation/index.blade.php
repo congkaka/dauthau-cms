@@ -54,13 +54,13 @@
                     <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_ecommerce_product_table">
                         <thead>
                             <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                <th>ID</th>
-                                <th>Số</th>
-                                <th>Tên VB</th>
+                                <!-- <th>ID</th> -->
+                                <th>Số hiệu</th>
+                                <th>Tên văn bản</th>
                                 <th class="min-w-100px">Cơ quan BH</th>
                                 <th>Người ký</th>
-                                <th>Ngày BH</th>
-                                <th>Ngày HL</th>
+                                <th class="min-w-150px">Ngày BH</th>
+                                <th class="min-w-150px">Ngày HL</th>
                                 <th>File</th>
                                 <th class="min-w-100px text-end">Hành Động</th>
                             </tr>
@@ -68,14 +68,14 @@
                         <tbody class="fw-bold text-gray-600">
                             @foreach($items as $i)
                             <tr>
-                                <td> {{ $i->id }} </td>
+                                <!-- <td> {{ $i->id }} </td> -->
                                 <td> {{ $i->number}} </td>
                                 <td> {{ $i->title}} </td>
                                 <td> {{ $i->issuingAgency}} </td>
                                 <td> {{ $i->signer}} </td>
-                                <td> {{ $i->issuedDate}} </td>
-                                <td> {{ $i->effectiveDate}} </td>
-                                <td> @if($i->download_path != 'not_found')<a href="{{ $i->download_path}}" download>{{ $i->download_path}}</a> @endif</td>
+                                <td> {{ date('d-m-Y', strtotime($i->issuedDate))}} </td>
+                                <td> {{ date('d-m-Y', strtotime($i->effectiveDate))}} </td>
+                                <td> @if($i->download_path != 'not_found')<a href="{{ $i->download_path}}" download>{{ basename($i->download_path)}}</a> @endif</td>
                                 <td class="text-end">
                                     <a href="{{route('admin.regulation.edit', $i->id)}}" class="menu-link"><i class="bi bi-pencil-square text-warning pe-3"></i></a>
                                     <a href="{{route('admin.regulation.destroy', $i->id)}}" class="menu-link delete_btn"><i class="bi bi-trash text-danger pe-3"></i></a>

@@ -44,6 +44,16 @@ $courses = \App\Models\Training::get();
                             <i class="bi bi-search"></i>
                         </button>
                         <!--end::Search-->
+                        <div class="row" style="margin-left: 20px;">
+                            <div class="col-12">
+                                <select name="training_id" class="form-control" onchange="this.form.submit()">
+                                    <option value="">Chọn khóa học</option>
+                                    @foreach($courses as $course)
+                                    <option value="{{$course->id}}" {{ $course->id == Request::get('training_id')?'selected' : '' }}>{{$course->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                     </form>
                     <!--end::Card title-->
                     <!--begin::Card toolbar-->
@@ -54,7 +64,7 @@ $courses = \App\Models\Training::get();
                     <!--end::Card toolbar-->
                 </div>
                 <div class="card-body pt-0">
-                    <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_ecommerce_product_table">
+                    <table class="table align-middle table-row-dashed fs-6 gy-5 " id="kt_ecommerce_product_table">
                         <thead>
                             <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                 <th class="min-w-140px">Họ tên</th>
@@ -62,12 +72,12 @@ $courses = \App\Models\Training::get();
                                 <th class="min-w-90px">Điện thoại</th>
                                 <th>Email</th>
                                 <th class="min-w-90px">Khóa học</th>
-                                <th>Nguồn</th>
+                                <!-- <th>Nguồn</th> -->
                                 <th class="min-w-90px">Chức vụ</th>
                                 <th class="min-w-90px">Công ty</th>
                                 <th class="min-w-100px">Kinh nghiệm</th>
-                                <th class="min-w-90px">Ghi chú</th>
-                                <th class="min-w-90px">Ngày tạo</th>
+                                <!-- <th class="min-w-90px">Ghi chú</th> -->
+                                <th class="min-w-125px">Ngày tạo</th>
                                 <th>#</th>
                             </tr>
                         </thead>
@@ -85,14 +95,14 @@ $courses = \App\Models\Training::get();
                                     }
                                     @endphp
                                 </td>
-                                <td> {{ $i->traffic}} </td>
+                                <!-- <td> {{ $i->traffic}} </td> -->
                                 <td> {{ $i->position}} </td>
                                 <td> {{ $i->company}} </td>
-                                <td> {{ $i->experience}} </td>
-                                <td> {{ $i->note}} </td>
-                                <td> {{ $i->created_at}} </td>
-                                <td style="position: absolute">
-                                    <!-- <a href="{{route('admin.booking.edit', $i->id)}}" class="menu-link"><i class="bi bi-pencil-square text-warning pe-3"></i></a> -->
+                                <td > {{ $i->experience}} </td>
+                                <!-- <td> {{ $i->note}} </td> -->
+                                <td> {{ date('d-m-Y', strtotime($i->created_at))}}</td>
+                                <td>
+                                    <a href="{{route('admin.booking.show', $i->id)}}" class="menu-link"><i class="bi bi-eye-fill text-warning pe-3"></i></a>
                                     <a href="{{route('admin.booking.destroy', $i->id)}}" class="menu-link delete_btn"><i class="bi bi-trash text-danger pe-3"></i></a>
                                 </td>
                             </tr>
