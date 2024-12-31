@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin\Booking;
 
+use App\Exports\BookingsExport;
 use App\Http\Controllers\Admin\CrudController;
 use App\Repositories\BookingRepository;
+use Maatwebsite\Excel\Facades\Excel;
 
 class BookingController extends CrudController
 {
@@ -90,4 +92,14 @@ class BookingController extends CrudController
     // {
     //     //
     // }
+
+    public function export() 
+    {
+        try {
+            return Excel::download(new BookingsExport, 'bookings.xlsx');
+
+        } catch (\Throwable $th) {
+            dd($th);
+        }
+    }
 }
