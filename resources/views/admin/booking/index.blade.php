@@ -15,7 +15,6 @@ $courses = \App\Models\Training::get();
                     <li class="breadcrumb-item text-muted">Quản lý đăng ký</li>
                 </ol>
             </div>
-            <!-- <a href="{{route('admin.booking.create')}}" class="btn btn-sm fw-bold btn-primary">Thêm mới</a> -->
             <!--end::Page title-->
         </div>
         <!--end::Container-->
@@ -54,6 +53,9 @@ $courses = \App\Models\Training::get();
                                 </select>
                             </div>
                         </div>
+                        <!-- <button type="button" id="export" class="btn btn-sm fw-bold btn-primary" style="position: absolute;right: 25px;">Xuất File</button> -->
+                        <a href="{{route('admin.booking.export')}}" id="export" class="btn btn-sm fw-bold btn-primary" style="position: absolute;right: 25px;">Xuất File</a>
+
                     </form>
                     <!--end::Card title-->
                     <!--begin::Card toolbar-->
@@ -98,7 +100,7 @@ $courses = \App\Models\Training::get();
                                 <!-- <td> {{ $i->traffic}} </td> -->
                                 <td> {{ $i->position}} </td>
                                 <td> {{ $i->company}} </td>
-                                <td > {{ $i->experience}} </td>
+                                <td> {{ $i->experience}} </td>
                                 <!-- <td> {{ $i->note}} </td> -->
                                 <td> {{ date('d-m-Y', strtotime($i->created_at))}}</td>
                                 <td>
@@ -119,4 +121,26 @@ $courses = \App\Models\Training::get();
 </div>
 @endsection
 @push('custom-scripts')
+<script>
+    $(document).on("click", "#export", function() {
+        $.ajax({
+            url: "{{route('admin.booking.export')}}",
+            method: 'POST',
+            data: {
+                _token: "{{csrf_token()}}"
+            },
+            success: function(response) {
+                if (response.success) {
+                    alert('Export Success');
+
+                } else {
+                    alert('Thay đổi trạng thái thất bại!');
+                }
+            },
+            error: function(xhr, status, error) {
+                console.log(xhr.responseText);
+            }
+        });
+    });
+</script>
 @endpush

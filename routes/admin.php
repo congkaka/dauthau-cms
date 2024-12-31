@@ -108,6 +108,7 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
 
     // Router booking
     Route::group([], function () {
+        Route::get('booking/export', [\App\Http\Controllers\Admin\Booking\BookingController::class, 'export'])->name('admin.booking.export');
         Route::resource('booking', \App\Http\Controllers\Admin\Booking\BookingController::class, array("as"=>"admin"));
     });
 
