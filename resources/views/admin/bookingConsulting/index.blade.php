@@ -62,6 +62,7 @@ $consultings = \App\Models\Consulting::get();
                                 <th class="min-w-90px">Điện thoại</th>
                                 <th>Email</th>
                                 <th>Dịch vụ</th>
+                                <th>Nội dung</th>
                                 <th class="min-w-90px">Ngày tạo</th>
                                 <th>#</th>
                             </tr>
@@ -74,11 +75,15 @@ $consultings = \App\Models\Consulting::get();
                                 <td> {{ $i->phone}} </td>
                                 <td> {{ $i->email}} </td>
                                 <td> @php
-                                    foreach ($consultings as $consulting) {
-                                        if($consulting->id == $i->consulting_id) echo $consulting->title;
+                                    if(!$i->consulting_id) echo 'Tư vấn chung';
+                                    else {
+                                            foreach ($consultings as $consulting) {
+                                            if($consulting->id == $i->consulting_id) echo $consulting->title;
+                                        }
                                     }
                                     @endphp </td>
-                                <td> {{ $i->created_at}} </td>
+                                <td> {{ $i->note}} </td>
+                                <td> {{ date('d-m-Y', strtotime($i->created_at))}} </td>
                                 <td style="position: absolute">
                                     <!-- <a href="{{route('admin.booking-consulting.edit', $i->id)}}" class="menu-link"><i class="bi bi-pencil-square text-warning pe-3"></i></a> -->
                                     <a href="{{route('admin.booking-consulting.destroy', $i->id)}}" class="menu-link delete_btn"><i class="bi bi-trash text-danger pe-3"></i></a>
