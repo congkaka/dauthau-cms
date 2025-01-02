@@ -12,6 +12,7 @@ class Practice extends Model
         'description',
         'title',
         'link',
-        'image'
+        'image',
+        'password',
     ];
 }

@@ -21,7 +21,7 @@ class BookingConsultingController extends Controller
                 'fullname' => 'required|string|max:255',
                 'phone' => 'required|string|max:15',
                 'email' => 'required|email',
-                'consulting_id' => 'required',
+                // 'consulting_id' => 'required',
             ];
 
             // Sử dụng Validator để kiểm tra dữ liệu đầu vào
@@ -46,7 +46,7 @@ class BookingConsultingController extends Controller
                     'email' => $request->email ?? null,
                     'fullname' => $request->fullname,
                     'gender' => $request->gender ?? null,
-                    'consulting_id' => $request->consulting_id,
+                    'consulting_id' => !empty($request->consulting_id) ? $request->consulting_id : null,
                     'note' => $request->note ?? null
                 ]
             );

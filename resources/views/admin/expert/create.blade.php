@@ -9,7 +9,7 @@
             <!--begin::Page title-->
             <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
                 <!--begin::Title-->
-                <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Add Expert</h1>
+                <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Thêm mới chuyên gia</h1>
                 <!--end::Title-->
                 <!--begin::Separator-->
                 <span class="h-20px border-gray-300 border-start mx-4"></span>
@@ -43,21 +43,21 @@
                                 <div class="col-md-12">
                                     <div class="mb-10 fv-row">
                                         <label class="required form-label">Tên</label>
-                                        <input type="text" name="name" value="" class="form-control" placeholder="Enter name" />
+                                        <input type="text" name="name" value="" class="form-control" placeholder="Nhập tên" />
                                     </div>
 
                                     <div class="mb-10 fv-row">
-                                        <label class="form-label">Current Position</label>
-                                        <input type="text" name="current_position" value="" class="form-control" placeholder="Enter the current position...." />
+                                        <label class="form-label">Vị trí, chức vụ</label>
+                                        <textarea type="text" name="current_position" value="" class="form-control" placeholder="Nhập vào vị trí, chức vụ...." ></textarea>
                                     </div>
 
                                     <div class="mb-10 input-group">
-                                        <span class="input-group-text">Description</span>
-                                        <textarea class="form-control" name="description" aria-label="description" placeholder="Enter Description"></textarea>
+                                        <span class="input-group-text">Chi tiết</span>
+                                        <textarea class="form-control" name="description" aria-label="description" placeholder="Nhập vào nội dung chi tiết"></textarea>
                                     </div>
 
                                     <div class="mb-10 fv-row">
-                                        <label class="required form-label">Position</label>
+                                        <label class="required form-label">Thứ tự hiển thị</label>
                                         <input type="number" name="position" value="" class="form-control" />
                                     </div>
                                     <div class="mb-10 fv-row">

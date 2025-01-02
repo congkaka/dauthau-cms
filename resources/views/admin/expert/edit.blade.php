@@ -9,7 +9,7 @@
             <!--begin::Page title-->
             <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
                 <!--begin::Title-->
-                <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">update Expert</h1>
+                <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Cập nhật chuyên gia</h1>
                 <!--end::Title-->
                 <!--begin::Separator-->
                 <span class="h-20px border-gray-300 border-start mx-4"></span>
@@ -47,17 +47,17 @@
                                     </div>
 
                                     <div class="mb-10 fv-row">
-                                        <label class="form-label">Current Position</label>
-                                        <input type="text" name="current_position" value="{{ $item->current_position }}" class="form-control" placeholder="Enter the current position...." />
+                                        <label class="form-label">Vị trí, chức vụ</label>
+                                        <textarea type="text" name="current_position" class="form-control" placeholder="Nhập vào vị trí, chức vụ...." >{{ $item->current_position }}</textarea>
                                     </div>
 
                                     <div class="mb-10 fv-row">
-                                        <label class="required form-label">Description</label>
+                                        <label class="required form-label">Chi tiết</label>
                                         <textarea class="form-control" name="description" aria-label="description">{{ $item->description }}</textarea>
                                     </div>
 
                                     <div class="mb-10 fv-row">
-                                        <label class="required form-label">Position</label>
+                                        <label class="required form-label">Thứ tự hiển thị</label>
                                         <input type="number" name="position" value="{{ $item->position }}" class="form-control" />
                                     </div>
 

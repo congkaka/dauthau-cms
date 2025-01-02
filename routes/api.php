@@ -75,6 +75,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/comment/add', [CommentController::class, 'addComment']);
 
     Route::get('/practices', [PracticeController::class, 'getAll']);
+    Route::post('/check-password-practice', [PracticeController::class, 'checkPasswordPractice']);
 
     Route::get('/consultings', [ConsultingController::class, 'getAll']);
     Route::get('/consulting/{alias}', [ConsultingController::class, 'getConsultingDetails']);
