@@ -19,7 +19,7 @@ class RegulationController extends Controller
         if(!empty($request->validity_type)) $regulations->where('validity_type', '=', $request->validity_type);
 
         $regulations = $regulations
-        ->orderBy('created_at', 'DESC')
+        ->orderBy('effectiveDate', 'DESC')
         ->paginate(10);
         // foreach($regulations as $regulation) {
         //     $regulation->download_path = $regulation->download_path;
