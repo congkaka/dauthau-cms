@@ -21,7 +21,16 @@ class DiscussionController extends Controller
 
     public function getDiscussions(Request $request)
     {
-        $data = Discussion::with(['children.user'])->where('status', 1)->whereNull('parent_id')->get();
+
+        $data = Discussion::with(['children.user']);
+
+        if(!empty($request->sort)) {
+            if($request->sort == 'desc') $data->orderBy('created_at', 'DESC');
+            if($request->sort == 'asc') $data->orderBy('created_at', 'ASC');
+        } else {
+            $data->orderBy('created_at', 'DESC');
+        }
+        $data = $data->where('status', 1)->whereNull('parent_id')->get();
 
         return Helper::response($data, 200);
     }
