@@ -58,7 +58,7 @@
 
                                     <div class="mb-10 fv-row">
                                         <label class="form-label">Mật khẩu</label>
-                                        <input type="password" name="password" class="form-control" placeholder="Nhập mật khẩu"/>
+                                        <input type="text" name="password" class="form-control" placeholder="Nhập mật khẩu"/>
                                     </div>
 
 

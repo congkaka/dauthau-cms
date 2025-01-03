@@ -58,7 +58,7 @@
 
                                     <div class="mb-10 fv-row">
                                         <label class="form-label">Mật khẩu</label>
-                                        <input type="password" name="password" value="{{$item->password}}" class="form-control" placeholder="Nhập mật khẩu"/>
+                                        <input type="text" name="password" value="{{$item->password}}" class="form-control" placeholder="Nhập mật khẩu"/>
                                     </div>
 
                                     <x-admin.single-img-upload inputName="image" fillValue="{{$item->image}}" />
