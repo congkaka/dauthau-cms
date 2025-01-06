@@ -62,6 +62,7 @@
                             <!--begin::Table row-->
                             <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                 <th class="min-w-150px">Tác giả</th>
+                                <th class="min-w-150px">Lĩnh vực</th>
                                 <th>Bình luận</th>
                                 <th class="min-w-100px">Đã đăng vào</th>
                                 <th class="min-w-100px">Trạng thái</th>
@@ -78,6 +79,7 @@
                                 <td>
                                     {{$i['name']}}
                                 </td>
+                                <td>{{ $i['title'] }}</td>
                                 <td>
                                     {{$i['content']}}
                                 </td>
