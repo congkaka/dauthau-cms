@@ -112,7 +112,17 @@ class DiscussionController extends CrudController
             dd($th);
             return redirect('discussions');
         }
-        
+    }
 
+    public function changeStatus(Request $request) {
+        try {
+            $discussion = Discussion::find($request->discussionId);
+            $discussion->status = (int) $request->status;
+            $discussion->save();
+
+            return response()->json(['success' => 'Cập nhật trạng thái thành công']);
+        } catch (\Throwable $th) {
+            dd($th);
+        }
     }
 }

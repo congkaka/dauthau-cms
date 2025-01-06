@@ -44,6 +44,7 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
     Route::group([], function () {
         Route::resource('discussions', \App\Http\Controllers\Admin\Discussion\DiscussionController::class, ["as"=>"admin"]);
         Route::post('discussion/reply', [\App\Http\Controllers\Admin\Discussion\DiscussionController::class, 'reply'])->name('admin.discussions.reply');
+        Route::post('changeStatus', [\App\Http\Controllers\Admin\Discussion\DiscussionController::class, 'changeStatus'])->name('admin.discussions.changeStatus');
     });
 
     // Router User
