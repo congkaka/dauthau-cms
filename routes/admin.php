@@ -37,14 +37,14 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
         Route::resource('comments', \App\Http\Controllers\Admin\Comment\CommentController::class, ["as"=>"admin"]);
         Route::get('comments/reply', [\App\Http\Controllers\Admin\Comment\CommentController::class, 'replyComment'])->name('admin.comments.replyComment');
         Route::post('reply', [\App\Http\Controllers\Admin\Comment\CommentController::class, 'reply'])->name('admin.comments.reply');
-        Route::post('changeStatus', [\App\Http\Controllers\Admin\Comment\CommentController::class, 'changeStatus'])->name('admin.comments.changeStatus');
+        Route::post('comments/changeStatus', [\App\Http\Controllers\Admin\Comment\CommentController::class, 'changeStatus'])->name('admin.comments.changeStatus');
     });
 
     // Router Discussions
     Route::group([], function () {
         Route::resource('discussions', \App\Http\Controllers\Admin\Discussion\DiscussionController::class, ["as"=>"admin"]);
         Route::post('discussion/reply', [\App\Http\Controllers\Admin\Discussion\DiscussionController::class, 'reply'])->name('admin.discussions.reply');
-        Route::post('changeStatus', [\App\Http\Controllers\Admin\Discussion\DiscussionController::class, 'changeStatus'])->name('admin.discussions.changeStatus');
+        Route::post('discussions/changeStatus', [\App\Http\Controllers\Admin\Discussion\DiscussionController::class, 'changeStatus'])->name('admin.discussions.changeStatus');
     });
 
     // Router User
