@@ -11,7 +11,7 @@ class BlogController extends Controller
 {
     public function getBlogs(Request $request) {
         try {
-            $blogs = Post::with(['categories'])->limit($request->limit)->get();
+            $blogs = Post::with(['categories'])->limit($request->limit)->orderBy('created_at', $request->sort??'Desc')->get();
             if ($blogs === 404) return Helper::response(null, 404);
             
             return Helper::response($blogs, 200);

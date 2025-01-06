@@ -32,7 +32,7 @@ class DiscussionController extends Controller
         }
         $data = $data->where('status', 1)->whereNull('parent_id')->get();
 
-        return Helper::response($data, 200);
+        return Helper::response($data->groupBy('title'), 200);
     }
 
     public function getDiscussionDetails(Request $request, $id)
