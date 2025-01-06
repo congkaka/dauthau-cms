@@ -87,15 +87,20 @@
                                 <td>
                                     @php
                                     foreach(\App\Enums\Regulation::getMap() as $v => $l){
-                                    if($i['status'] == $v) echo $l;
+                                    if($i['status'] == $v) echo "<span id='status-$i->id'>$l</span>";
                                     }
                                     @endphp
                                 </td>
-                                <td class="text-end">
-                                    <a href="{{route('admin.discussions.edit', $i['id'])}}" class="menu-link"><i class="bi bi-pencil-square text-warning pe-3"></i></a>
-                                    <i class="bi bi-reply text-primary pe-3" data-id="{{$i['id']}}" data-bs-toggle="modal" data-bs-target="#kt_modal_reply"></i>
-                                    <a href="{{route('admin.discussions.destroy', $i['id'])}}" data-kt-customer-table-filter="delete_row" class="menu-link delete_btn"><i class="bi bi-trash text-danger pe-3"></i></a>
-                                    <a href="{{route('admin.discussions.show', $i->id)}}"><button class="text-gray">{{ count($i['children']) }}</button></a>
+                                <td class="text-end" style="position: relative;">
+                                    <div class="action" style="display: flex; position: absolute; right: -35px;">
+                                        <a href="{{route('admin.discussions.edit', $i['id'])}}" class="menu-link"><i class="bi bi-pencil-square text-warning pe-3"></i></a>
+                                        <i class="bi bi-reply text-primary pe-3" data-id="{{$i['id']}}" data-bs-toggle="modal" data-bs-target="#kt_modal_reply"></i>
+                                        <a href="{{route('admin.discussions.destroy', $i['id'])}}" data-kt-customer-table-filter="delete_row" class="menu-link delete_btn"><i class="bi bi-trash text-danger pe-3"></i></a>
+                                        <a href="{{route('admin.discussions.show', $i->id)}}"><button class="text-gray">{{ count($i['children']) }}</button></a>
+                                        <div class="form-check form-switch" style="margin-left: 5px;">
+                                            <input class="form-check-input h-20px w-30px changeStatus" data-id="{{$i['id']}}" type="checkbox" role="switch" @if($i['status'] == 1)checked @endif>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach
@@ -215,7 +220,33 @@
 <script>
     $('.bi-reply').on('click', function() {
         $('#comment_id').val($(this).data('id'));
-    })
+    });
+
+    $('.changeStatus').on('change', function() {
+        let discussionId = $(this).data('id');
+        let status = $(this).is(':checked')? 1 : 2;
+
+        $.ajax({
+            url: "{{route('admin.discussions.changeStatus')}}",
+            method: 'POST',
+            data: {
+                discussionId: discussionId,
+                status: status,
+                _token: "{{csrf_token()}}"
+            },
+            success: function(response) {
+                if (response.success) {
+                    status == 1 ? $('#status-'+discussionId).text('Đã phê duyệt') : $('#status-'+discussionId).text('Đang chờ');
+
+                } else {
+                    alert('Thay đổi trạng thái thất bại!');
+                }
+            },
+            error: function(xhr, status, error) {
+                console.log(xhr.responseText);
+            }
+        });
+    });
 
     ClassicEditor
         .create(document.querySelector('#comment_reply'))
