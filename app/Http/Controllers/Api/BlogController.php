@@ -14,7 +14,7 @@ class BlogController extends Controller
             $blogs = Post::with(['categories'])->limit($request->limit);
             if ($request->search) $blogs->where('title', 'like', "%{$request->search}%");
             $blogs = $blogs->orderBy('created_at', $request->sort??'Desc')
-            ->get();
+            ->paginate(10);
             if ($blogs === 404) return Helper::response(null, 404);
             
             return Helper::response($blogs, 200);
