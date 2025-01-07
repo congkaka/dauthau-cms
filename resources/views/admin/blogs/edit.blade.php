@@ -137,12 +137,7 @@
 @push('custom-scripts')
 <script>
     ClassicEditor
-        .create(document.querySelector('#kt_docs_ckeditor_classic'), {
-            ckfinder: {
-                uploadUrl: '{{route('
-                storage.ck_upload ').' ? _token = '.csrf_token()}}'
-            }
-        })
+        .create(document.querySelector('#kt_docs_ckeditor_classic'))
         .then(editor => {
             console.log(editor);
         })
