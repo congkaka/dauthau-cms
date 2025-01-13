@@ -24,7 +24,8 @@ class Post extends Model
         'store_id',
         'image',
         'featured',
-        'status'
+        'status',
+        'position'
     ];
 
     public function categories()

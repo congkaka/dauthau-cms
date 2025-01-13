@@ -109,12 +109,10 @@
                                         </div>
                                     </div>
                                     <div class="col-6">
-                                        {{-- <div class="mb-10 fv-row">
-                                                <label class="col-lg-4 col-form-label fw-bold fs-6">Featured</label>
-                                                <div class="form-check form-switch">
-                                                    <input class="form-check-input" name="featured" type="checkbox">
-                                                </div>
-                                            </div> --}}
+                                        <div class="mb-10 fv-row">
+                                            <label class="col-lg-4 col-form-label fw-bold fs-6">Thứ tự hiển thị</label>
+                                            <input type="number" name="position" value="" class="form-control" />
+                                        </div>
                                     </div>
                                 </div>
 
